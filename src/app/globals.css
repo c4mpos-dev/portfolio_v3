@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * "Caderno de engenharia": graph paper by default, blueprint when dark.
+ * One accent — safety orange — used for marks, never for surfaces.
+ */
+:root {
+  --paper: #f3f2ec;
+  --sheet: #fbfaf6;
+  --ink: #1b1e23;
+  --ink-2: #3c414a;
+  --muted: #5f6570;
+  --faint: #8a8f98;
+  --line: rgba(27, 30, 35, 0.22);
+  --line-soft: rgba(27, 30, 35, 0.1);
+  --grid: rgba(27, 30, 35, 0.045);
+  --grid-major: rgba(27, 30, 35, 0.075);
+  --accent: #e2471b;
+  --accent-ink: #ffffff;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #0d2140;
+  --sheet: #10284b;
+  --ink: #e8eef8;
+  --ink-2: #c4d0e3;
+  --muted: #9cb0cf;
+  --faint: #7189ad;
+  --line: rgba(196, 214, 245, 0.3);
+  --line-soft: rgba(196, 214, 245, 0.13);
+  --grid: rgba(196, 214, 245, 0.05);
+  --grid-major: rgba(196, 214, 245, 0.09);
+  --accent: #ff6a3d;
+  --accent-ink: #0d2140;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --breakpoint-desk: 1024px;
+
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-paper: var(--paper);
+  --color-sheet: var(--sheet);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-blink: blink 1.2s steps(1) infinite;
+  --animate-blink-slow: blink-slow 4.5s steps(1) infinite;
+  --animate-bob: bob 2.8s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.3s ease;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes blink-slow {
+    0%,
+    92%,
+    100% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 0;
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--paper);
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  body {
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+    /* Graph paper: minor squares every 24px, major every 120px */
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:
+      120px 120px,
+      120px 120px,
+      24px 24px,
+      24px 24px;
+    background-attachment: fixed;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+  :focus-visible {
+    outline: 1.5px dashed var(--accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
+/* Expanded technical display type */
+@utility display {
+  font-family: var(--font-sans);
+  font-stretch: 118%;
+  font-variation-settings: "wdth" 118;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Small uppercase mono label */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Underlined mono link */
+@utility link-u {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+  transition:
+    text-decoration-color 0.2s ease,
+    color 0.2s ease;
+  &:hover {
+    text-decoration-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+/* Corner registration marks, like a drawing frame */
+@utility crop {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--accent);
+    pointer-events: none;
+  }
+  &::before {
+    top: -5px;
+    left: -5px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  &::after {
+    right: -5px;
+    bottom: -5px;
+    border-right: 1.5px solid;
+    border-bottom: 1.5px solid;
+  }
+}
+
+/* Revealed on scroll by ScrollFx */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s var(--ease-out-expo);
+  &[data-in] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Dimension line that draws itself left → right */
+.dim {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-out-expo) 0.15s;
+}
+[data-in] .dim,
+.dim[data-in] {
+  transform: scaleX(1);
+}
+
+/* Figure "plotted" in from the left */
+.plot {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.plot[data-in] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Telemetry bars rise one after another */
+.sig {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+[data-in] .sig {
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01s !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .dim,
+  .sig {
+    transform: none;
+  }
+  .plot {
+    clip-path: none;
+  }
+}
