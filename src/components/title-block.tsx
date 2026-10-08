@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navFor } from "@/content/site";
 import { PixelRobot } from "./pixel-robot";
-import { RobotMark } from "./robot-mark";
+import { LogoMark } from "./logo";
 import { useActiveSection } from "./use-active-section";
 
 const QUIPS: Record<string, string> = {
@@ -68,7 +68,7 @@ export function TitleBlock() {
       <aside aria-hidden className="border border-line bg-sheet/95 font-mono text-[9.5px] tracking-[0.06em] text-muted uppercase backdrop-blur">
         <div className="grid grid-cols-[1fr_auto] border-b border-line">
           <div className={`${cell} flex items-center gap-2 border-r text-ink`}>
-            <RobotMark className="size-4" />
+            <LogoMark className="size-4" />
             Cauã Campos
           </div>
           <div className={cell}>

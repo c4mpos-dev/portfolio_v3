@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { social } from "@/content/site";
 import { PixelRobot } from "./pixel-robot";
-import { RobotMark } from "./robot-mark";
+import { LogoMark } from "./logo";
 
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
 
@@ -128,7 +128,7 @@ export function Footer() {
       {/* The robot stands on the footer when the corner title block isn't shown */}
       <PixelRobot size={36} className="absolute right-4 bottom-full animate-bob min-[1440px]:hidden" />
       <div className="flex items-center gap-2 border-b border-line px-3 py-2.5 text-ink sm:border-r sm:border-b-0">
-        <RobotMark className="size-4" /> Cauã Campos
+        <LogoMark className="size-4" /> Cauã Campos
       </div>
       <div className="border-b border-line px-3 py-2.5 sm:border-r sm:border-b-0">© 2026 · desenhado e construído por mim · rev. 26.10</div>
       <div className="flex gap-4 px-3 py-2.5">

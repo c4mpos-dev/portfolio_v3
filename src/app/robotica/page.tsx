@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RobotMark } from "@/components/robot-mark";
+import { LogoMark } from "@/components/logo";
 import { Dimension, Figure, Footer, Reveal, Section } from "@/components/ui";
 import { highlights, roboticsRole, stats, teams } from "@/content/robotica";
 import { AchievementLog } from "./achievement-log";
@@ -27,7 +27,7 @@ export default function RoboticaPage() {
               madrugada de oficina no meio.
             </p>
             <p className="mt-5 flex gap-3 border-l-2 border-accent pl-4 text-[15px] leading-relaxed text-muted">
-              <RobotMark className="mt-0.5 size-5 shrink-0 text-ink" />
+              <LogoMark className="mt-0.5 size-5 shrink-0 text-ink" />
               {roboticsRole}
             </p>
           </Reveal>

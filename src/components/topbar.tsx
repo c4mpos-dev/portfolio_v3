@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navFor } from "@/content/site";
-import { RobotMark } from "./robot-mark";
+import { LogoLockup } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { useActiveSection } from "./use-active-section";
 
@@ -23,10 +23,8 @@ export function Topbar() {
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-[1160px] items-center justify-between gap-6 px-[clamp(16px,4vw,40px)]">
-          <Link href="/" className="flex items-center gap-2.5" onClick={close}>
-            <RobotMark className="size-[22px]" />
-            <span className="display text-[13px] tracking-[0.02em] whitespace-nowrap uppercase">Cauã Campos</span>
-            <span className="hidden font-mono text-[11px] whitespace-nowrap text-faint 2xl:inline">/ full stack</span>
+          <Link href="/" aria-label="Cauã Campos — início" onClick={close}>
+            <LogoLockup />
           </Link>
 
           <nav aria-label="Seções" className="hidden items-center gap-4 xl:flex">
