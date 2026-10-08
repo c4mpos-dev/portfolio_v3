@@ -123,6 +123,10 @@
       background-color 0.35s ease,
       color 0.35s ease;
   }
+  /* Grid items may shrink below their content (wide diagrams/tables scroll inside instead of widening the page) */
+  :where(.grid) > * {
+    min-width: 0;
+  }
   :focus-visible {
     outline: 1.5px dashed var(--accent);
     outline-offset: 3px;

@@ -85,7 +85,7 @@ export default function HomePage() {
         title="Do requisito ao deploy."
         dimension="Abr 2024 → Set 2026 · 3 empresas"
       >
-        <div className="grid gap-[clamp(56px,9vh,96px)]">
+        <div className="grid grid-cols-1 gap-[clamp(56px,9vh,96px)]">
           {experience.map((j, ji) => (
             <article key={j.id}>
               <Reveal className="grid gap-6 border-t-2 border-ink pt-5 desk:grid-cols-[minmax(0,1fr)_260px]">
