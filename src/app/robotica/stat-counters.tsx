@@ -38,24 +38,29 @@ function useCountUp(to: number, el: React.RefObject<HTMLElement | null>) {
   return value;
 }
 
-function Stat({ n, label, detail, className }: (typeof stats)[number] & { className: string }) {
+function Stat({ n, label, detail, index }: (typeof stats)[number] & { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const value = useCountUp(n, ref);
   return (
-    <div ref={ref} tabIndex={0} className={`stat group px-5 py-4 outline-offset-[-2px] ${className}`}>
-      <dt className="display text-[clamp(2rem,4vw,2.8rem)] leading-none tabular-nums">{value}</dt>
-      <dd className="label mt-2 text-[10px]">{label}</dd>
-      <dd className="stat-detail mt-2 text-[12.5px] leading-snug text-muted">{detail}</dd>
+    <div
+      ref={ref}
+      className={`flex flex-col gap-2 border-line py-5 pr-5 ${index % 2 ? "border-l pl-5" : ""} ${index > 1 ? "border-t sm:border-t-0" : ""} sm:pl-5 sm:first:pl-0 sm:[&:not(:first-child)]:border-l`}
+    >
+      <div className="flex items-baseline gap-2">
+        <dt className="display text-[clamp(2.4rem,5vw,3.4rem)] leading-none tabular-nums">{value}</dt>
+        <span className="font-mono text-[11px] tracking-[0.12em] text-accent uppercase">{label}</span>
+      </div>
+      <dd className="text-[13px] leading-snug text-muted">{detail}</dd>
     </div>
   );
 }
 
-/** The four robotics numbers: they count up on arrival, and each explains itself on hover/focus (always on touch). */
+/** The four robotics numbers as one readout strip; they count up when they come into view. */
 export function StatCounters() {
   return (
-    <dl className="crop grid grid-cols-2 border border-line bg-sheet">
+    <dl className="grid grid-cols-2 border-y-2 border-ink sm:grid-cols-4">
       {stats.map((s, i) => (
-        <Stat key={s.label} {...s} className={`${i % 2 ? "border-l" : ""} ${i > 1 ? "border-t" : ""} border-line`} />
+        <Stat key={s.label} {...s} index={i} />
       ))}
     </dl>
   );

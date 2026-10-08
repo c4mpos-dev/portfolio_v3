@@ -281,22 +281,6 @@
   }
 }
 
-/* Robotics numbers: the explanation appears on hover/focus where hover exists, always on touch */
-@media (hover: hover) {
-  .stat-detail {
-    opacity: 0;
-    transform: translateY(-2px);
-    transition:
-      opacity 0.2s ease,
-      transform 0.2s ease;
-  }
-  .stat:hover .stat-detail,
-  .stat:focus-visible .stat-detail {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 /* Live architecture diagram: boxes fade in, wires draw, packets appear once drawn */
 .arch-node {
   transition: opacity 0.2s ease;

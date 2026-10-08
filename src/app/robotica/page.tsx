@@ -21,21 +21,20 @@ export default function RoboticaPage() {
         </Reveal>
         <Dimension className="mt-8" start="2017 · OMERJ" end="2024 · ConstruTech" label="8 anos" />
 
-        <div className="mt-10 grid items-start gap-10 desk:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-          <Reveal>
-            <p className="text-[18px] leading-relaxed text-ink-2">
-              Oito anos de robótica competitiva, hackathons e olimpíadas científicas. Houston, Wolfenbüttel e muita
-              madrugada de oficina no meio.
-            </p>
-            <p className="mt-5 flex gap-3 border-l-2 border-accent pl-4 text-[15px] leading-relaxed text-muted">
-              <LogoMark className="mt-0.5 size-5 shrink-0 text-ink" />
-              {roboticsRole}
-            </p>
-          </Reveal>
-          <Reveal>
-            <StatCounters />
-          </Reveal>
-        </div>
+        <Reveal className="mt-10 grid items-start gap-6 desk:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] desk:gap-10">
+          <p className="text-[18px] leading-relaxed text-ink-2">
+            Oito anos de robótica competitiva, hackathons e olimpíadas científicas. Houston, Wolfenbüttel e muita
+            madrugada de oficina no meio.
+          </p>
+          <p className="flex gap-3 border-l-2 border-accent pl-4 text-[15px] leading-relaxed text-muted">
+            <LogoMark className="mt-0.5 size-5 shrink-0 text-ink" />
+            {roboticsRole}
+          </p>
+        </Reveal>
+
+        <Reveal className="mt-12">
+          <StatCounters />
+        </Reveal>
       </header>
 
       <Section
