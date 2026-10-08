@@ -1,7 +1,8 @@
 /**
  * Schematic of the Next Devices system described in the CV: three services
- * (web app, main API, geospatial microservice), device telemetry in, async
- * flows on the side, real-time out. Not to scale.
+ * (web app, main API, geospatial microservice). Devices send telemetry straight
+ * to the geospatial microservice, which talks to the main API; async flows on
+ * the side, real-time out to the web app. Not to scale.
  *
  * Live: boxes and wires draw in when revealed, telemetry packets travel the wires
  * (SVG animateMotion), and hovering a box highlights only its flows (CSS :has).
@@ -13,18 +14,18 @@ type Node = { id: NodeId; x: number; y: number; h: number; title: string; sub: s
 const W = 170;
 const nodes: Node[] = [
   { id: "iot", x: 20, y: 30, h: 64, title: "Dispositivos IoT", sub: ["telemetria em campo"] },
-  { id: "outbox", x: 20, y: 222, h: 64, title: "Outbox · filas", sub: ["workers · jobs agendados"] },
-  { id: "api", x: 295, y: 112, h: 92, title: "API principal", sub: ["NestJS · REST · Swagger", "Clean Arch · DDD", "JWT + roles"], main: true },
-  { id: "geo", x: 570, y: 30, h: 64, title: "Microserviço", sub: ["processamento geoespacial"] },
-  { id: "web", x: 570, y: 222, h: 64, title: "Aplicação web", sub: ["React · Next.js · Mapbox"] },
+  { id: "geo", x: 295, y: 30, h: 64, title: "Microserviço", sub: ["processamento geoespacial"] },
+  { id: "api", x: 295, y: 150, h: 92, title: "API principal", sub: ["NestJS · REST · Swagger", "Clean Arch · DDD", "JWT + roles"], main: true },
+  { id: "outbox", x: 20, y: 164, h: 64, title: "Outbox · filas", sub: ["workers · jobs agendados"] },
+  { id: "web", x: 570, y: 164, h: 64, title: "Aplicação web", sub: ["React · Next.js · Mapbox"] },
 ];
 
 /** `from`→`to` follows the path direction; `both` also sends packets back. */
 const edges: { from: NodeId; to: NodeId; d: string; label: string; lx: number; ly: number; both: boolean; dur: number }[] = [
-  { from: "iot", to: "api", d: "M190 62 H242 V140 H295", label: "HTTP · TCP", lx: 196, ly: 54, both: false, dur: 1.6 },
-  { from: "api", to: "geo", d: "M465 140 H517 V62 H570", label: "contratos", lx: 474, ly: 54, both: true, dur: 2.2 },
-  { from: "api", to: "web", d: "M465 176 H517 V254 H570", label: "WebSocket · SSE", lx: 472, ly: 272, both: false, dur: 1.4 },
-  { from: "api", to: "outbox", d: "M295 176 H242 V254 H190", label: "assíncrono", lx: 196, ly: 272, both: true, dur: 2.6 },
+  { from: "iot", to: "geo", d: "M190 62 H295", label: "HTTP · TCP", lx: 210, ly: 54, both: false, dur: 1.4 },
+  { from: "geo", to: "api", d: "M380 94 V150", label: "contratos", lx: 388, ly: 126, both: true, dur: 1.8 },
+  { from: "api", to: "web", d: "M465 196 H570", label: "WebSocket · SSE", lx: 474, ly: 188, both: false, dur: 1.4 },
+  { from: "api", to: "outbox", d: "M295 196 H190", label: "assíncrono", lx: 200, ly: 188, both: true, dur: 1.8 },
 ];
 
 // Hovering a node dims every wire and box it isn't connected to.
@@ -49,10 +50,10 @@ export function ArchDiagram() {
         <div className="overflow-x-auto border border-line bg-sheet">
           <div data-r="" className="arch plot min-w-[620px] p-3">
             <svg
-              viewBox="0 0 760 316"
+              viewBox="0 0 760 286"
               className="w-full font-mono"
               role="img"
-              aria-label="Diagrama: dispositivos IoT enviam telemetria por HTTP e TCP para a API principal, que conversa com o microserviço geoespacial, usa filas assíncronas e transmite em tempo real para a aplicação web por WebSocket e SSE."
+              aria-label="Diagrama: dispositivos IoT enviam telemetria por HTTP e TCP para o microserviço geoespacial, que conversa com a API principal; a API usa filas assíncronas e transmite em tempo real para a aplicação web por WebSocket e SSE."
             >
               <defs>
                 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -115,7 +116,7 @@ export function ArchDiagram() {
                 </g>
               ))}
 
-              <text x="20" y="310" fontSize="9.5" style={{ fill: "var(--faint)" }}>
+              <text x="20" y="280" fontSize="9.5" style={{ fill: "var(--faint)" }}>
                 ESQUEMÁTICO · SEM ESCALA · DEPLOY: AWS (EC2/ECR) · DOCKER · NGINX · GITHUB ACTIONS
               </text>
             </svg>
