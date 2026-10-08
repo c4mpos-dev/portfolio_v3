@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ViewTransition } from "react";
 import { ACCESS, KINDS, PLATFORMS, projects, type Access } from "@/content/projects";
 import { AccessBadge } from "./access-badge";
 import { requestRevealScan } from "./scroll-fx";
@@ -59,7 +59,9 @@ export function ProjectList() {
               >
                 <span className="pt-0.5 font-mono text-[11.5px] text-accent">{p.n}</span>
                 <span>
-                  <span className="block text-[15.5px] font-semibold group-hover:text-accent">{p.name}</span>
+                  <ViewTransition name={`project-title-${p.slug}`} share="morph" default="none">
+                    <span className="block w-fit text-[15.5px] font-semibold group-hover:text-accent">{p.name}</span>
+                  </ViewTransition>
                   <span className="mt-0.5 block text-[13.5px] text-muted">
                     {p.summary}
                     {p.org && <span className="font-mono text-[11.5px] text-faint"> · {p.org}</span>}

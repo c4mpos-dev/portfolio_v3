@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { AccessBadge } from "@/components/access-badge";
 import { Chips, Dimension, Figure, Footer, Reveal, Section } from "@/components/ui";
@@ -39,13 +40,16 @@ export default async function ProjectPage(props: PageProps<"/projetos/[slug]">) 
         <Link href="/#projetos" className="link-u text-[12px]">
           ← lista de peças
         </Link>
-        <Reveal className="mt-8">
+        {/* Not a Reveal: the title must be visible at once so the list → page morph lands on it. */}
+        <div className="mt-8">
           <div className="label">
             <span className="text-accent">Item {item}</span> / {KINDS[p.kind]}
           </div>
-          <h1 className="display mt-4 max-w-[18ch] text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.98]">{p.name}</h1>
+          <ViewTransition name={`project-title-${p.slug}`} share="morph" default="none">
+            <h1 className="display mt-4 w-fit max-w-[18ch] text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.98]">{p.name}</h1>
+          </ViewTransition>
           <p className="mt-5 max-w-[56ch] text-[18px] leading-relaxed text-ink-2">{p.summary}</p>
-        </Reveal>
+        </div>
         <Dimension className="mt-8" label={p.platforms.map((x) => PLATFORMS[x]).join(" · ")} />
       </header>
 
