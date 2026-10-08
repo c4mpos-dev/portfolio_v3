@@ -237,6 +237,101 @@
   transform: scaleY(1);
 }
 
+/* Theme switch as a blueprint copier: the new sheet is scanned in over the old one.
+   Paper → blueprint scans down; blueprint → paper scans back up. */
+[data-scan]::view-transition-old(root),
+[data-scan]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+[data-scan="down"]::view-transition-new(root) {
+  animation: scan-down 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-scan="up"]::view-transition-new(root) {
+  animation: scan-up 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@keyframes scan-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes scan-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Project title morphs from the list row into the project page heading */
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: morph-blur;
+}
+@keyframes morph-blur {
+  30% {
+    filter: blur(2px);
+  }
+}
+
+/* Robotics numbers: the explanation appears on hover/focus where hover exists, always on touch */
+@media (hover: hover) {
+  .stat-detail {
+    opacity: 0;
+    transform: translateY(-2px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .stat:hover .stat-detail,
+  .stat:focus-visible .stat-detail {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Live architecture diagram: boxes fade in, wires draw, packets appear once drawn */
+.arch-node {
+  transition: opacity 0.2s ease;
+  cursor: default;
+}
+.arch:not([data-in]) .arch-node {
+  opacity: 0;
+}
+[data-in].arch .arch-node {
+  animation: arch-in 0.4s ease backwards;
+}
+@keyframes arch-in {
+  from {
+    opacity: 0;
+  }
+}
+.arch-wire {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.7s var(--ease-out-expo);
+}
+.arch-packet {
+  opacity: 0;
+  transition: opacity 0.3s ease 1.4s;
+}
+.arch-edge {
+  transition: opacity 0.2s ease;
+}
+[data-in].arch .arch-wire {
+  stroke-dashoffset: 0;
+}
+[data-in].arch .arch-packet {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -254,5 +349,11 @@
   }
   .plot {
     clip-path: none;
+  }
+  .arch-packet {
+    display: none;
+  }
+  .arch-wire {
+    stroke-dashoffset: 0;
   }
 }
