@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { social } from "@/content/site";
 import { PixelRobot } from "./pixel-robot";
+import { FxReady } from "./scroll-fx";
 import { LogoMark } from "./logo";
 
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(" ");
@@ -125,6 +126,7 @@ export function Figure({
 export function Footer() {
   return (
     <footer className="relative mt-[clamp(96px,16vh,180px)] mb-8 grid border border-line font-mono text-[10.5px] tracking-[0.06em] text-muted uppercase sm:grid-cols-[auto_1fr_auto]">
+      <FxReady />
       {/* The robot stands on the footer when the corner title block isn't shown */}
       <PixelRobot size={36} className="absolute right-4 bottom-full animate-bob min-[1440px]:hidden" />
       <div className="flex items-center gap-2 border-b border-line px-3 py-2.5 text-ink sm:border-r sm:border-b-0">
