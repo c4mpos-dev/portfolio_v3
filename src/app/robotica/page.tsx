@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { LogoMark } from "@/components/logo";
 import { Dimension, Figure, Footer, Reveal, Section } from "@/components/ui";
-import { highlights, roboticsRole, stats, teams } from "@/content/robotica";
+import { highlights, roboticsRole, teams } from "@/content/robotica";
 import { AchievementLog } from "./achievement-log";
+import { StatCounters } from "./stat-counters";
 
 export const metadata: Metadata = { title: "Robótica" };
 
@@ -32,14 +33,7 @@ export default function RoboticaPage() {
             </p>
           </Reveal>
           <Reveal>
-            <dl className="crop grid grid-cols-2 border border-line bg-sheet">
-              {stats.map((s, i) => (
-                <div key={s.label} className={`px-5 py-4 ${i % 2 ? "border-l" : ""} ${i > 1 ? "border-t" : ""} border-line`}>
-                  <dt className="display text-[clamp(2rem,4vw,2.8rem)] leading-none">{s.n}</dt>
-                  <dd className="label mt-2 text-[10px]">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
+            <StatCounters />
           </Reveal>
         </div>
       </header>

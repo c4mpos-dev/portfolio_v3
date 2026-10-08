@@ -1,10 +1,10 @@
 import { achievements } from "./achievements";
 
 export const stats = [
-  { n: "33", label: "conquistas" },
-  { n: "8", label: "anos" },
-  { n: "2", label: "mundiais" },
-  { n: "3", label: "equipes" },
+  { n: 33, label: "conquistas", detail: "Competições, hackathons e olimpíadas de 2017 a 2024, todas na linha do tempo abaixo." },
+  { n: 8, label: "anos", detail: "De 2017 (OMERJ) a 2024 (2º Hackathon ConstruTech)." },
+  { n: 2, label: "mundiais", detail: "FRC World Championship em Houston e FIRA RoboWorld Cup na Alemanha, ambos em 2023." },
+  { n: 3, label: "equipes", detail: "Pequeno Gigante, Smart Lego e Nine Tails #9219." },
 ];
 
 const photo = (id: string) => achievements.find((a) => a.id === id)?.image;
