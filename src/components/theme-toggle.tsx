@@ -10,12 +10,25 @@ export const themeInitScript = `try{var t=localStorage.getItem("theme");if(t==="
 const listeners = new Set<() => void>();
 const getTheme = (): Theme => (document.documentElement.dataset.theme === "dark" ? "dark" : "light");
 
-function setTheme(t: Theme) {
+function applyTheme(t: Theme) {
   document.documentElement.dataset.theme = t;
   try {
     localStorage.setItem("theme", t);
   } catch {}
   listeners.forEach((l) => l());
+}
+
+/**
+ * Switch themes like a blueprint copier: the new sheet is revealed by a scan
+ * moving down the screen (View Transitions). Instant where unsupported or with reduced motion.
+ */
+function setTheme(t: Theme) {
+  if (t === getTheme()) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced || !document.startViewTransition) return applyTheme(t);
+  document.documentElement.dataset.scan = t === "dark" ? "down" : "up";
+  const vt = document.startViewTransition(() => applyTheme(t));
+  vt.finished.finally(() => delete document.documentElement.dataset.scan);
 }
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
