@@ -1,3 +1,5 @@
+import { localeDate, localizeList, type Lang } from "@/i18n";
+
 export type Job = {
   id: string;
   company: string;
@@ -96,3 +98,74 @@ export const education = [
   { school: "INATEL", fullName: "Instituto Nacional de Telecomunicações", course: "Bacharelado em Engenharia de Software", period: "2024 – 2026", note: "Transferido para a AEDB por mudança de cidade" },
   { school: "FIRJAN SENAI Resende", course: "Técnico em Desenvolvimento de Sistemas", period: "2021 – 2023", note: "Concluído" },
 ];
+
+// English
+const EXPERIENCE_EN: Record<string, Partial<Job>> = {
+  "next-devices": {
+    role: "Junior Full Stack Developer",
+    type: "Full-time",
+    context: "Web tracking applications integrated with IoT devices — from architecture to production deployment.",
+    bullets: [
+      "Worked end to end on web tracking applications integrated with IoT devices, from architecture decisions and technical documentation (PRDs, TDDs, data flows and architecture reviews) to production deployment.",
+      "Built a distributed system of three services: a responsive, interactive web application, a main API and a geospatial processing microservice, defining the communication contracts and isolating heavy processing from the main API.",
+      "Designed and implemented REST APIs with Clean Architecture and DDD, documented with Swagger, with JWT and refresh-token authentication and role-based access control.",
+      "Implemented asynchronous flows with the Outbox pattern, queues, workers and scheduled jobs, plus telemetry ingestion from field devices over HTTP and TCP sockets, streamed to the client in real time over WebSocket and Server-Sent Events.",
+    ],
+    stack: [
+      "TypeScript", "React", "Next.js", "Vite", "Tailwind CSS", "NestJS", "Node.js", "REST APIs", "Microservices",
+      "Clean Architecture", "DDD", "PostgreSQL", "TypeORM", "WebSocket", "SSE", "Mapbox", "AWS (EC2/ECR/IAM)",
+      "Docker", "GitHub Actions", "Nginx", "Linux", "Git", "Scrum",
+    ],
+  },
+  oracclum: {
+    role: "Full Stack Developer",
+    place: "Remote",
+    type: "Internship",
+    context: "A data tracking platform for digital campaigns, on a large Clean Architecture back end.",
+    bullets: [
+      "Worked full stack on a data tracking platform for digital campaigns, on a large Clean Architecture back end that required working through every layer.",
+      "Led refactors of legacy code, mapping flows and dependencies before changing anything so it could evolve without regressions in production.",
+      "Implemented cookie-based authentication in Next.js across client-side rendering, server-side rendering and Server Actions, keeping the session consistent between server and client and protecting routes by access profile.",
+      "Built and maintained the Taboola API integration, consuming paid-media campaign data with error handling and normalization, along with REST endpoints and front-end screens.",
+    ],
+    stack: [
+      "TypeScript", "JavaScript", "React", "Next.js (Server Components, Server Actions)", "Tailwind CSS", "Node.js",
+      "Express.js", "REST APIs", "Clean Architecture", "Cookie authentication", "Third-party APIs", "Git", "Scrum",
+    ],
+  },
+  inatel: {
+    role: "Full Stack Developer",
+    fullName: "National Telecommunications Institute",
+    type: "Internship",
+    context: "Ongoing development of internal systems in production, from discovery with users to delivery.",
+    bullets: [
+      "Worked on the ongoing development of internal systems in production, taking part in discovery with users, refactors and new features.",
+      "Built web interfaces in Vue.js on a corporate low-code platform in a restricted environment, adapting solutions to the tool's limits.",
+      "Implemented back-end features in Python (Flask and Django), with automation routines that replaced manual processes, programmatic data exports, and analysis and charts with Pandas and Matplotlib.",
+    ],
+  },
+};
+
+const SKILLS_EN = [
+  { label: "Languages" },
+  { label: "Technologies" },
+  {
+    label: "Practices",
+    items: [
+      "Clean Architecture", "DDD", "Microservices", "REST APIs", "CI/CD", "Automated testing",
+      "Technical documentation (PRD, TDD)", "Swagger/OpenAPI", "Git", "Scrum", "Kanban", "Code review",
+    ],
+  },
+  { label: "Spoken languages", items: ["Portuguese (native)", "English (intermediate)"] },
+];
+
+const EDUCATION_EN = [
+  { fullName: "Dom Bosco Educational Association", course: "B.Sc. in Software Engineering", note: "In progress" },
+  { fullName: "National Telecommunications Institute", course: "B.Sc. in Software Engineering", note: "Transferred to AEDB after moving cities" },
+  { course: "Technical degree in Systems Development", note: "Completed" },
+];
+
+export const experienceFor = (lang: Lang) =>
+  localizeList(lang, experience, "id", EXPERIENCE_EN).map((j) => ({ ...j, period: localeDate(lang, j.period) }));
+export const skillsFor = (lang: Lang) => (lang === "en" ? skills.map((g, i) => ({ ...g, ...SKILLS_EN[i] })) : skills);
+export const educationFor = (lang: Lang) => (lang === "en" ? education.map((e, i) => ({ ...e, ...EDUCATION_EN[i] })) : education);

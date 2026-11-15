@@ -1,3 +1,5 @@
+import { tr, type Lang } from "@/i18n";
+
 /**
  * Schematic of the Next Devices system described in the CV: three services
  * (web app, main API, geospatial microservice). Devices send telemetry straight
@@ -12,20 +14,31 @@ type NodeId = "iot" | "outbox" | "api" | "geo" | "web";
 type Node = { id: NodeId; x: number; y: number; h: number; title: string; sub: string[]; main?: boolean };
 
 const W = 170;
-const nodes: Node[] = [
-  { id: "iot", x: 20, y: 30, h: 64, title: "Dispositivos IoT", sub: ["telemetria em campo"] },
-  { id: "geo", x: 295, y: 30, h: 64, title: "Microserviço", sub: ["processamento geoespacial"] },
-  { id: "api", x: 295, y: 150, h: 92, title: "API principal", sub: ["NestJS · REST · Swagger", "Clean Arch · DDD", "JWT + roles"], main: true },
-  { id: "outbox", x: 20, y: 164, h: 64, title: "Outbox · filas", sub: ["workers · jobs agendados"] },
-  { id: "web", x: 570, y: 164, h: 64, title: "Aplicação web", sub: ["React · Next.js · Mapbox"] },
-];
+const NODES: Record<Lang, Node[]> = {
+  pt: [
+    { id: "iot", x: 20, y: 30, h: 64, title: "Dispositivos IoT", sub: ["telemetria em campo"] },
+    { id: "geo", x: 295, y: 30, h: 64, title: "Microserviço", sub: ["processamento geoespacial"] },
+    { id: "api", x: 295, y: 150, h: 92, title: "API principal", sub: ["NestJS · REST · Swagger", "Clean Arch · DDD", "JWT + roles"], main: true },
+    { id: "outbox", x: 20, y: 164, h: 64, title: "Outbox · filas", sub: ["workers · jobs agendados"] },
+    { id: "web", x: 570, y: 164, h: 64, title: "Aplicação web", sub: ["React · Next.js · Mapbox"] },
+  ],
+  en: [
+    { id: "iot", x: 20, y: 30, h: 64, title: "IoT devices", sub: ["field telemetry"] },
+    { id: "geo", x: 295, y: 30, h: 64, title: "Microservice", sub: ["geospatial processing"] },
+    { id: "api", x: 295, y: 150, h: 92, title: "Main API", sub: ["NestJS · REST · Swagger", "Clean Arch · DDD", "JWT + roles"], main: true },
+    { id: "outbox", x: 20, y: 164, h: 64, title: "Outbox · queues", sub: ["workers · scheduled jobs"] },
+    { id: "web", x: 570, y: 164, h: 64, title: "Web application", sub: ["React · Next.js · Mapbox"] },
+  ],
+};
+// Node ids and positions are the same in both languages; the hover rules come from either.
+const nodes = NODES.pt;
 
 /** `from`→`to` follows the path direction; `both` also sends packets back. */
-const edges: { from: NodeId; to: NodeId; d: string; label: string; lx: number; ly: number; both: boolean; dur: number }[] = [
+const edges: { from: NodeId; to: NodeId; d: string; label: string; en?: string; lx: number; ly: number; both: boolean; dur: number }[] = [
   { from: "iot", to: "geo", d: "M190 62 H295", label: "HTTP · TCP", lx: 210, ly: 54, both: false, dur: 1.4 },
-  { from: "geo", to: "api", d: "M380 94 V150", label: "contratos", lx: 388, ly: 126, both: true, dur: 1.8 },
+  { from: "geo", to: "api", d: "M380 94 V150", label: "contratos", en: "contracts", lx: 388, ly: 126, both: true, dur: 1.8 },
   { from: "api", to: "web", d: "M465 196 H570", label: "WebSocket · SSE", lx: 474, ly: 188, both: false, dur: 1.4 },
-  { from: "api", to: "outbox", d: "M295 196 H190", label: "assíncrono", lx: 200, ly: 188, both: true, dur: 1.8 },
+  { from: "api", to: "outbox", d: "M295 196 H190", label: "assíncrono", en: "async", lx: 200, ly: 188, both: true, dur: 1.8 },
 ];
 
 // Hovering a node dims every wire and box it isn't connected to.
@@ -42,7 +55,8 @@ const neighbours = (id: NodeId) =>
     edges.filter((e) => e.from === id || e.to === id).map((e) => [`data-near-${e.from === id ? e.to : e.from}`, ""]),
   );
 
-export function ArchDiagram() {
+export function ArchDiagram({ lang = "pt" }: { lang?: Lang }) {
+  const nodes = NODES[lang];
   return (
     <figure>
       <style>{hoverCss}</style>
@@ -53,7 +67,11 @@ export function ArchDiagram() {
               viewBox="0 0 760 286"
               className="w-full font-mono"
               role="img"
-              aria-label="Diagrama: dispositivos IoT enviam telemetria por HTTP e TCP para o microserviço geoespacial, que conversa com a API principal; a API usa filas assíncronas e transmite em tempo real para a aplicação web por WebSocket e SSE."
+              aria-label={tr(
+                lang,
+                "Diagrama: dispositivos IoT enviam telemetria por HTTP e TCP para o microserviço geoespacial, que conversa com a API principal; a API usa filas assíncronas e transmite em tempo real para a aplicação web por WebSocket e SSE.",
+                "Diagram: IoT devices send telemetry over HTTP and TCP to the geospatial microservice, which talks to the main API; the API uses asynchronous queues and streams to the web application in real time over WebSocket and SSE.",
+              )}
             >
               <defs>
                 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -75,7 +93,7 @@ export function ArchDiagram() {
                     markerStart={e.both ? "url(#arr)" : undefined}
                   />
                   <text x={e.lx} y={e.ly} fontSize="10.5" style={{ fill: "var(--accent)" }}>
-                    {e.label}
+                    {lang === "en" ? (e.en ?? e.label) : e.label}
                   </text>
                   {/* Telemetry packets */}
                   {[0, 0.5].map((offset) => (
@@ -117,14 +135,15 @@ export function ArchDiagram() {
               ))}
 
               <text x="20" y="280" fontSize="9.5" style={{ fill: "var(--faint)" }}>
-                ESQUEMÁTICO · SEM ESCALA · DEPLOY: AWS (EC2/ECR) · DOCKER · NGINX · GITHUB ACTIONS
+                {tr(lang, "ESQUEMÁTICO · SEM ESCALA", "SCHEMATIC · NOT TO SCALE")} · DEPLOY: AWS (EC2/ECR) · DOCKER · NGINX · GITHUB ACTIONS
               </text>
             </svg>
           </div>
         </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. 01</span> — Sistema distribuído em três serviços. Passe o mouse numa caixa para ver os fluxos dela.
+        <span className="text-accent">FIG. 01</span> —{" "}
+        {tr(lang, "Sistema distribuído em três serviços. Passe o mouse numa caixa para ver os fluxos dela.", "A distributed system in three services. Hover a box to see its flows.")}
       </figcaption>
     </figure>
   );

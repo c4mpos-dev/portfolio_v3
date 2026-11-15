@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { social } from "@/content/site";
+import { localePath, tr, type Lang } from "@/i18n";
 import { PixelRobot } from "./pixel-robot";
 import { FxReady } from "./scroll-fx";
 import { LogoMark } from "./logo";
@@ -44,6 +45,7 @@ export function Section({
   title,
   lead,
   dimension,
+  lang = "pt",
   children,
 }: {
   id: string;
@@ -52,13 +54,14 @@ export function Section({
   title: ReactNode;
   lead?: ReactNode;
   dimension?: ReactNode;
+  lang?: Lang;
   children: ReactNode;
 }) {
   return (
     <section id={id} data-section="" className="pt-[clamp(88px,14vh,160px)]">
       <Reveal>
         <div className="label">
-          <span className="text-accent">Folha {String(index).padStart(2, "0")}</span> / {label}
+          <span className="text-accent">{tr(lang, "Folha", "Sheet")} {String(index).padStart(2, "0")}</span> / {label}
         </div>
         <h2 className="display mt-4 max-w-[20ch] text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.02]">{title}</h2>
       </Reveal>
@@ -95,26 +98,44 @@ export function Figure({
   alt = "",
   caption,
   fig,
+  fit = "cover",
+  overlay,
+  lang = "pt",
   className,
 }: {
   src?: string;
   alt?: string;
   caption: string;
   fig: string;
+  /** "contain" shows the whole image (screenshots) on the sheet, without the drift. */
+  fit?: "cover" | "contain";
+  /** Rendered over the frame, e.g. a button that opens the image in a viewer. */
+  overlay?: ReactNode;
+  lang?: Lang;
   className?: string;
 }) {
   return (
     <figure>
-      <div data-r="" className={cx("plot crop relative overflow-hidden border border-line bg-sheet", className)}>
-        {src ? (
-          <Image src={src} alt={alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-cover" />
-        ) : (
-          <div className="flex size-full items-center justify-center bg-[repeating-linear-gradient(45deg,var(--line-soft)_0_1px,transparent_1px_8px)]">
-            <span className="border border-line bg-sheet px-2 py-1 font-mono text-[10.5px] tracking-[0.08em] text-faint uppercase">
-              foto pendente
-            </span>
-          </div>
-        )}
+      {/* The corner marks sit outside the frame, so they can't share the element that clips the photo */}
+      <div className="crop">
+        <div data-r="" data-scrub="" className={cx("plot relative overflow-hidden border border-line bg-sheet", className)}>
+          {src ? (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes="(min-width: 1024px) 900px, 100vw"
+              className={fit === "contain" ? "object-contain p-3" : "drift object-cover"}
+            />
+          ) : (
+            <div className="flex size-full items-center justify-center bg-[repeating-linear-gradient(45deg,var(--line-soft)_0_1px,transparent_1px_8px)]">
+              <span className="border border-line bg-sheet px-2 py-1 font-mono text-[10.5px] tracking-[0.08em] text-faint uppercase">
+                {tr(lang, "foto pendente", "photo pending")}
+              </span>
+            </div>
+          )}
+          {overlay}
+        </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
         <span className="text-accent">FIG. {fig}</span> — {caption}
@@ -123,7 +144,7 @@ export function Figure({
   );
 }
 
-export function Footer() {
+export function Footer({ lang = "pt" }: { lang?: Lang }) {
   return (
     <footer className="relative mt-[clamp(96px,16vh,180px)] mb-8 grid border border-line font-mono text-[10.5px] tracking-[0.06em] text-muted uppercase sm:grid-cols-[auto_1fr_auto]">
       <FxReady />
@@ -132,13 +153,13 @@ export function Footer() {
       <div className="flex items-center gap-2 border-b border-line px-3 py-2.5 text-ink sm:border-r sm:border-b-0">
         <LogoMark className="size-4" /> Cauã Campos
       </div>
-      <div className="border-b border-line px-3 py-2.5 sm:border-r sm:border-b-0">© 2026 · desenhado e construído por mim · rev. 26.10</div>
+      <div className="border-b border-line px-3 py-2.5 sm:border-r sm:border-b-0">© 2026 · {tr(lang, "desenhado e construído por mim", "designed and built by me")} · rev. 26.10</div>
       <div className="flex gap-4 px-3 py-2.5">
-        <Link href="/" className="hover:text-accent">
-          Início
+        <Link href={localePath(lang, "/")} className="hover:text-accent">
+          {tr(lang, "Início", "Home")}
         </Link>
-        <Link href="/robotica" className="hover:text-accent">
-          Robótica
+        <Link href={localePath(lang, "/robotica")} className="hover:text-accent">
+          {tr(lang, "Robótica", "Robotics")}
         </Link>
         <a href={social.github} target="_blank" rel="noreferrer" className="hover:text-accent">
           GitHub ↗

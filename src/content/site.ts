@@ -1,3 +1,5 @@
+import type { Lang } from "@/i18n";
+
 export const social = {
   email: "campos.eet@gmail.com",
   whatsapp: "https://wa.me/5524981372475",
@@ -32,6 +34,14 @@ export const pageNav: Record<string, { sections: NavSection[]; other: { href: st
     ],
     other: { href: "/", label: "Início" },
   },
+  "/robotica/equipes": {
+    sections: [
+      { id: "pequeno-gigante", label: "Pequeno Gigante" },
+      { id: "smart-lego", label: "Smart Lego" },
+      { id: "nine-tails", label: "Nine Tails" },
+    ],
+    other: { href: "/robotica", label: "Robótica" },
+  },
   "/projetos": {
     sections: [
       { id: "visao-geral", label: "Visão geral" },
@@ -41,6 +51,30 @@ export const pageNav: Record<string, { sections: NavSection[]; other: { href: st
   },
 };
 
-/** Nav for a pathname; every /projetos/<slug> page shares one entry. */
-export const navFor = (pathname: string) =>
-  pageNav[pathname.startsWith("/projetos/") ? "/projetos" : pathname] ?? pageNav["/"];
+const LABELS_EN: Record<string, string> = {
+  Experiência: "Experience",
+  Projetos: "Projects",
+  Telemetria: "Telemetry",
+  Competências: "Skills",
+  Formação: "Education",
+  Sobre: "About",
+  Contato: "Contact",
+  Robótica: "Robotics",
+  Destaques: "Highlights",
+  "Linha do tempo": "Timeline",
+  Equipes: "Teams",
+  Início: "Home",
+  "Visão geral": "Overview",
+  Galeria: "Gallery",
+};
+
+/**
+ * Nav for a pathname (without the language prefix); every /projetos/<slug> page shares
+ * one entry. Unknown paths (the 404 page) have no sections.
+ */
+export function navFor(pathname: string, lang: Lang = "pt") {
+  const nav = pageNav[pathname.startsWith("/projetos/") ? "/projetos" : pathname] ?? { sections: [], other: { href: "/", label: "Início" } };
+  if (lang === "pt") return nav;
+  const en = (l: string) => LABELS_EN[l] ?? l;
+  return { sections: nav.sections.map((s) => ({ ...s, label: en(s.label) })), other: { ...nav.other, label: en(nav.other.label) } };
+}
