@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, [data-theme="graphite"], [data-theme="graphite"] *));
 
 /*
  * "Caderno de engenharia": graph paper by default, blueprint when dark.
@@ -35,6 +35,23 @@
   --grid-major: rgba(196, 214, 245, 0.09);
   --accent: #ff6a3d;
   --accent-ink: #0d2140;
+  color-scheme: dark;
+}
+
+/* Graphite: a drafting board at night — charcoal sheet, pencil-grey lines, same orange */
+[data-theme="graphite"] {
+  --paper: #18191b;
+  --sheet: #1f2023;
+  --ink: #e9e7e1;
+  --ink-2: #c8c6bf;
+  --muted: #9b9992;
+  --faint: #76746e;
+  --line: rgba(233, 231, 225, 0.22);
+  --line-soft: rgba(233, 231, 225, 0.1);
+  --grid: rgba(233, 231, 225, 0.04);
+  --grid-major: rgba(233, 231, 225, 0.075);
+  --accent: #f6743f;
+  --accent-ink: #18191b;
   color-scheme: dark;
 }
 
@@ -241,6 +258,205 @@
   transform: scaleY(1);
 }
 
+/*
+ * Photo reel ("Sobre"), as a blueprint copier: the new print is scanned in top to bottom
+ * behind an accent line, starts in blueprint tones and develops into colour, then drifts.
+ * The active progress segment fills over the photo's time on screen; its animationend
+ * advances the reel, so pausing the bar pauses the reel.
+ */
+.reel-in {
+  animation: reel-wipe 0.75s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.reel-scan {
+  animation: reel-scan 0.75s cubic-bezier(0.65, 0, 0.35, 1) both;
+  box-shadow: 0 0 14px 2px var(--accent);
+}
+.reel-develop {
+  animation:
+    reel-develop 1.3s ease-out both,
+    reel-zoom 4.2s ease-out both;
+}
+.reel-bar {
+  animation: reel-fill 3.4s linear both;
+}
+[data-paused] .reel-bar {
+  animation-play-state: paused;
+}
+@keyframes reel-wipe {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes reel-scan {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes reel-develop {
+  from {
+    filter: grayscale(1) sepia(1) hue-rotate(175deg) saturate(2.4) brightness(0.85) contrast(1.15);
+  }
+  to {
+    filter: none;
+  }
+}
+@keyframes reel-zoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes reel-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Redacted sheet: bars strike across one after another, then the stamp lands */
+.redact {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+[data-in] .redact {
+  transform: scaleX(1);
+}
+.stamp {
+  opacity: 0;
+  transform: rotate(-7deg) scale(1.7);
+  transition:
+    opacity 0.12s ease 1.5s,
+    transform 0.28s cubic-bezier(0.5, 0, 0.2, 1.4) 1.5s;
+}
+[data-in] .stamp {
+  opacity: 0.9;
+  transform: rotate(-7deg) scale(1);
+}
+
+/* Bars of the teams chart draw left → right, one row after another */
+.gantt-bar {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-out-expo);
+}
+[data-in] .gantt-bar {
+  transform: scaleX(1);
+}
+
+/*
+ * Scroll-scrubbed pieces. ScrollFx writes --p (0 → 1) on every [data-scrub] as it
+ * crosses the viewport; each piece derives its own eased range from it.
+ */
+[data-scrub] {
+  --p: 0;
+}
+
+/* Photo drifting inside its frame while the page moves */
+.drift {
+  transform: scale(1.14) translateY(calc((var(--p) - 0.5) * -9%));
+  will-change: transform;
+}
+
+/* Exploded view of the stack: plates start apart and seat as the figure reaches mid-screen */
+.stack {
+  --e: clamp(0, calc((var(--p) - 0.14) / 0.3), 1);
+}
+.stack-plate {
+  transform: translateY(calc(var(--lift) * (1 - var(--e)) * 1px));
+}
+.stack-axis {
+  opacity: calc(1 - var(--e));
+}
+.stack-done {
+  opacity: clamp(0, calc((var(--e) - 0.85) * 7), 1);
+}
+
+/*
+ * Route map: a pinned scene. The dot-matrix land sweeps in like a sonar from Resende
+ * when revealed; then the scroll plots each leg in turn, a plotter crosshair riding
+ * the line and the distance counting up in the readout below.
+ */
+/* Tall enough to give each leg its own stretch of scroll, without leaving a void on tall screens */
+.pin-track {
+  height: clamp(1300px, 210vh, 1900px);
+}
+.route .leg-1 {
+  --d: clamp(0, calc((var(--p) - 0.05) / 0.4), 1);
+}
+.route .leg-2 {
+  --d: clamp(0, calc((var(--p) - 0.52) / 0.4), 1);
+}
+.route-land {
+  clip-path: circle(0% at 47% 82%);
+  transition: clip-path 1.8s cubic-bezier(0.3, 0, 0.2, 1) 0.15s;
+}
+[data-in] .route-land {
+  clip-path: circle(130% at 47% 82%);
+}
+.route-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--d));
+}
+.route-rider {
+  offset-rotate: 0deg;
+  offset-distance: calc(var(--d) * 100%);
+  /* Only while in transit */
+  opacity: clamp(0, calc(min(var(--d), 1 - var(--d)) * 60), 1);
+}
+.route-end {
+  opacity: clamp(0, calc((var(--d) - 0.95) * 20), 1);
+}
+.route-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: route-ping 2.4s ease-out infinite;
+}
+@keyframes route-ping {
+  from {
+    transform: scale(0.25);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.route-km {
+  counter-reset: km calc(var(--d) * var(--dist));
+}
+.route-km::before {
+  content: counter(km);
+}
+.route-bar {
+  transform: scaleX(var(--d));
+  transform-origin: left;
+}
+/* The leg being plotted is the one in focus */
+.route-cell {
+  opacity: clamp(0.45, calc(0.45 + var(--d) * 30), 1);
+}
+
+/* Side ruler: marker slides with page progress */
+.ruler-marker {
+  top: calc(var(--prog, 0) * 100%);
+}
+
 /* Theme switch as a blueprint copier: the new sheet is scanned in over the old one.
    Paper → blueprint scans down; blueprint → paper scans back up. */
 [data-scan]::view-transition-old(root),
@@ -332,8 +548,28 @@
     transform: none;
   }
   .dim,
-  .sig {
+  .sig,
+  .gantt-bar,
+  .redact,
+  .drift {
     transform: none;
+  }
+  .stamp {
+    opacity: 0.9;
+    transform: rotate(-7deg);
+  }
+  .pin-track {
+    height: auto;
+  }
+  .route-land {
+    clip-path: none;
+  }
+  .route-ping {
+    display: none;
+  }
+  /* Scrubbed pieces rest in their finished state */
+  [data-scrub] {
+    --p: 1 !important;
   }
   .plot {
     clip-path: none;
