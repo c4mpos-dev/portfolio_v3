@@ -9,14 +9,14 @@ import { useLang } from "@/i18n/lang-context";
 
 type Filter = "todas" | AchievementGroup;
 
-/** Full competition log: filterable timeline, each entry with its photo; click opens a viewer. */
-export function AchievementLog() {
+/** Competition log for the given groups: filterable timeline, each entry with its photo; click opens a viewer. */
+export function AchievementLog({ groups }: { groups: AchievementGroup[] }) {
   const [filter, setFilter] = useState<Filter>("todas");
   const [open, setOpen] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
 
   const lang = useLang();
-  const achievements = achievementsFor(lang);
+  const achievements = achievementsFor(lang).filter((a) => groups.includes(a.group));
   const list = achievements.filter((a) => filter === "todas" || a.group === filter);
   const current = open === null ? null : list[open];
 
@@ -35,7 +35,9 @@ export function AchievementLog() {
 
   const tabs: { id: Filter; label: string; count: number }[] = [
     { id: "todas", label: tr(lang, "Todas", "All"), count: achievements.length },
-    ...achievementGroupsFor(lang).map((g) => ({ ...g, count: achievements.filter((a) => a.group === g.id).length })),
+    ...achievementGroupsFor(lang)
+      .filter((g) => groups.includes(g.id))
+      .map((g) => ({ ...g, count: achievements.filter((a) => a.group === g.id).length })),
   ];
 
   return (
@@ -61,7 +63,7 @@ export function AchievementLog() {
         </div>
         <ol>
           {list.map((a, i) => (
-            <li key={a.id} data-r="" className="reveal relative border-t border-line-soft">
+            <li key={a.id} className="relative border-t border-line-soft">
               <span className="absolute top-[27px] -left-[31px] size-[9px] border-2 border-accent bg-paper" />
               <button
                 type="button"
@@ -83,7 +85,7 @@ export function AchievementLog() {
                     alt={a.title}
                     fill
                     sizes="(min-width: 1024px) 168px, 100vw"
-                    className="object-cover grayscale-[35%] transition-[filter,transform] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+                    className="object-cover grayscale-[35%] transition-[filter] duration-500 group-hover:grayscale-0"
                   />
                   <span className="absolute right-1 bottom-1 bg-ink/80 px-1 font-mono text-[9.5px] text-paper uppercase">{tr(lang, "ampliar", "enlarge")}</span>
                 </span>

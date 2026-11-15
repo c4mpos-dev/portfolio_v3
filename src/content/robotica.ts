@@ -1,9 +1,18 @@
 import { localizeList, type Lang } from "@/i18n";
-import { achievements, achievementsFor } from "./achievements";
+import { achievements, achievementsFor, type AchievementGroup } from "./achievements";
+
+/** The robotics page shows these groups; hackathons and olympiads have their own page (/competicoes). */
+export const ROBOTICS_GROUPS: AchievementGroup[] = ["robotica", "outros"];
+const records = achievements.filter((a) => ROBOTICS_GROUPS.includes(a.group));
+/** Staff work at an event is on the timeline but is not an award. */
+export const ROBOTICS_WINS = records.filter((a) => a.category !== "Evento").length;
+export const ROBOTICS_FIRST = Math.min(...records.map((a) => a.year));
+export const ROBOTICS_LAST = Math.max(...records.map((a) => a.year));
+export const ROBOTICS_YEARS = ROBOTICS_LAST - ROBOTICS_FIRST + 1;
 
 export const stats = [
-  { n: 33, label: "conquistas", detail: "Competições, hackathons e olimpíadas de 2017 a 2024, todas na linha do tempo abaixo." },
-  { n: 8, label: "anos", detail: "De 2017 (OMERJ) a 2024 (2º Hackathon ConstruTech)." },
+  { n: ROBOTICS_WINS, label: "conquistas", detail: `Competições de robótica de ${ROBOTICS_FIRST} a ${ROBOTICS_LAST}, todas na linha do tempo abaixo.` },
+  { n: ROBOTICS_YEARS, label: "anos", detail: `De ${ROBOTICS_FIRST} (primeira OBR regional) a ${ROBOTICS_LAST} (IronCup, como staff).` },
   { n: 2, label: "mundiais", detail: "FRC World Championship em Houston e FIRA RoboWorld Cup na Alemanha, ambos em 2023." },
   { n: 3, label: "equipes", detail: "Pequeno Gigante, Smart Lego e Nine Tails #9219." },
 ];
@@ -14,7 +23,7 @@ export const highlights = [
   {
     event: "FRC World Championship",
     year: "Abr 2023",
-    result: "Rookie Inspiration Award — divisão Curie",
+    result: "Rookie Inspiration Award na divisão Curie",
     team: "Nine Tails #9219",
     place: "Houston, EUA",
     image: photo("frc-houston"),
@@ -49,11 +58,11 @@ export const teams: Team[] = [
   {
     slug: "nine-tails",
     name: "Nine Tails #9219",
-    period: "2022–2023",
+    period: "2022 → 2023",
     from: 2022,
     to: 2023,
     place: "Resende, RJ",
-    desc: "Equipe de FRC do SESI SENAI Resende, onde atingi o nível mais alto da robótica. Fiz parte da primeira geração.",
+    desc: "Equipe do SESI SENAI Resende na FRC, a liga de robôs de grande porte. Fiz parte da primeira geração.",
     awards: ["Rookie Inspiration Award · Houston 2023", "Rookie All-Star · FRC Brasil 2023", "Engineering Award · off-season 2023"],
     image: "/images/equipes/nine-tails.jpg",
     match: /nine tails/i,
@@ -61,19 +70,19 @@ export const teams: Team[] = [
   {
     slug: "smart-lego",
     name: "Smart Lego",
-    period: "2021–2023",
+    period: "2021 → 2023",
     from: 2021,
     to: 2023,
     place: "Resende, RJ",
-    desc: "Time de robótica do SESI Resende, que levei junto à primeira competição internacional da equipe.",
-    awards: ["3º · FIRA RoboWorld Cup 2023", "3º geral e Champions Award · FLL 2022"],
+    desc: "Time de robótica do SESI Resende, que ajudei a levar à primeira competição internacional.",
+    awards: ["3º · FIRA RoboWorld Cup 2023", "3º geral e Champion's Award · FLL 2022"],
     image: "/images/equipes/smart-lego.jpg",
     match: /smart lego/i,
   },
   {
     slug: "pequeno-gigante",
     name: "Pequeno Gigante",
-    period: "2018–2021",
+    period: "2018 → 2021",
     from: 2018,
     to: 2021,
     place: "Piraí, RJ",
@@ -96,26 +105,26 @@ export const routeOrigin = { name: "Resende", lat: -22.47, lon: -44.45 };
 
 // Source: CV_CauaCampos.pdf (Prêmios e projetos)
 export const roboticsRole =
-  "Responsável pelos algoritmos de navegação autônoma e manipulação de objetos com IA e IoT nas competições de 2023 (FRC e FIRA RoboWorld Cup).";
+  "Responsável pelos algoritmos de navegação autônoma e manipulação de objetos nas competições de 2023 (FRC e FIRA RoboWorld Cup). Na FRC, mira com câmera Limelight e controle PID.";
 
 // English
 const STATS_EN = [
-  { label: "achievements", detail: "Competitions, hackathons and olympiads from 2017 to 2024, all in the timeline below." },
-  { label: "years", detail: "From 2017 (OMERJ) to 2024 (2nd ConstruTech Hackathon)." },
+  { label: "achievements", detail: `Robotics competitions from ${ROBOTICS_FIRST} to ${ROBOTICS_LAST}, all in the timeline below.` },
+  { label: "years", detail: `From ${ROBOTICS_FIRST} (first OBR regional) to ${ROBOTICS_LAST} (IronCup, as staff).` },
   { label: "world events", detail: "FRC World Championship in Houston and FIRA RoboWorld Cup in Germany, both in 2023." },
   { label: "teams", detail: "Pequeno Gigante, Smart Lego and Nine Tails #9219." },
 ];
 export const statsFor = (lang: Lang) => (lang === "en" ? stats.map((s, i) => ({ ...s, ...STATS_EN[i] })) : stats);
 
 const HIGHLIGHTS_EN = [
-  { year: "Apr 2023", result: "Rookie Inspiration Award — Curie division", place: "Houston, USA" },
+  { year: "Apr 2023", result: "Rookie Inspiration Award in the Curie division", place: "Houston, USA" },
   { year: "Jul 2023", result: "3rd in Mission Impossible Hardware and 3rd in Tug of War", place: "Wolfenbüttel, Germany" },
 ];
 export const highlightsFor = (lang: Lang) => (lang === "en" ? highlights.map((h, i) => ({ ...h, ...HIGHLIGHTS_EN[i] })) : highlights);
 
 const TEAMS_EN: Record<string, Partial<Team>> = {
   "nine-tails": {
-    desc: "The FRC team at SESI SENAI Resende, where I reached the top level of robotics. I was part of its first generation.",
+    desc: "The SESI SENAI Resende team in FRC, the league for large robots. I was part of its first generation.",
     awards: ["Rookie Inspiration Award · Houston 2023", "Rookie All-Star · FRC Brazil 2023", "Engineering Award · 2023 off-season"],
   },
   "smart-lego": {
@@ -131,7 +140,7 @@ export const teamsFor = (lang: Lang) => localizeList(lang, teams, "slug", TEAMS_
 
 export const roboticsRoleFor = (lang: Lang) =>
   lang === "en"
-    ? "In charge of the autonomous navigation and object manipulation algorithms, with AI and IoT, in the 2023 competitions (FRC and FIRA RoboWorld Cup)."
+    ? "In charge of the autonomous navigation and object manipulation algorithms in the 2023 competitions (FRC and FIRA RoboWorld Cup). In FRC, aiming with a Limelight camera and PID control."
     : roboticsRole;
 
 const ROUTES_EN = [
