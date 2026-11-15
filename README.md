@@ -2,12 +2,12 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-blueprint.png">
-  <img alt="Cauã Campos — Full Stack Developer. TypeScript nas duas pontas." src=".github/assets/banner-papel.png" width="100%">
+  <img alt="Cauã Campos | Full Stack Developer. TypeScript nas duas pontas." src=".github/assets/banner-papel.png" width="100%">
 </picture>
 
 <br>
 
-**Portfólio v3 de Cauã Campos** — desenvolvedor Full Stack em Resende, RJ.<br>
+**Portfólio v3 de Cauã Campos**, desenvolvedor Full Stack em Resende, RJ.<br>
 Um site pensado como um **caderno de engenharia**: papel milimetrado, plantas em blueprint, cotas, carimbo técnico e um robozinho pixel.
 
 <br>
@@ -43,19 +43,19 @@ Um site pensado como um **caderno de engenharia**: papel milimetrado, plantas em
 
 ## O conceito
 
-A maioria dos portfólios de dev se parece: fundo preto, gradiente roxo, cards arredondados. Este parte de outra pergunta: **como seria o portfólio de alguém que passou oito anos em oficina de robótica antes de escrever software profissionalmente?**
+A maioria dos portfólios de dev se parece: fundo preto, gradiente roxo, cards arredondados. Este parte de outra pergunta: **como seria o portfólio de alguém que passou anos em oficina de robótica antes de escrever software profissionalmente?**
 
 A resposta virou uma linguagem visual de **desenho técnico**:
 
 | Elemento | De onde vem |
 |---|---|
 | **Papel milimetrado**, **blueprint** e **grafite** | O caderno de projeto, a planta de engenharia e a prancheta à noite. A troca entre eles é uma varredura, como numa copiadora heliográfica. |
-| **Folhas numeradas** (`FOLHA 01 / EXPERIÊNCIA`) | Cada seção é uma folha de um conjunto de desenhos. |
+| **Folhas numeradas** (`FOLHA 01`) | Cada seção é uma folha de um conjunto de desenhos. |
 | **Cotas** `├──── ────┤` | As linhas de dimensão do desenho técnico, que se desenham sozinhas ao aparecer. |
-| **Carimbo** no canto da tela | O quadro de identificação de uma planta: autor, folha atual, escala e revisão. Acompanha a seção que você está lendo. |
+| **Carimbo** no canto da tela | O quadro de identificação de uma planta: autor, folha atual, escala e revisão (o ano e o mês do build). Acompanha a seção que você está lendo. |
 | **Laranja de segurança** como único destaque | Oficina, FRC e sinalização industrial. Usado só em marcas, nunca em superfícies. |
 | **Logo em pixel** | Um **C** (Cauã Campos) sob o **til** de "Cauã", a letra que torna o nome único. Desenhada num grid de 6 × 10 para ficar nítida no favicon de 16px. |
-| **Robozinho pixel** | O mascote, em pé sobre o carimbo, comentando a seção atual. Clique nele. |
+| **Robozinho pixel** | Um detalhe pequeno: fica em pé sobre o carimbo, no rodapé e na folha 404. |
 | **Telemetria** | A atividade no GitHub lida como um sensor em campo. |
 
 ---
@@ -64,23 +64,23 @@ A resposta virou uma linguagem visual de **desenho técnico**:
 
 <table>
   <tr>
-    <td width="50%"><img src=".github/assets/screenshots/home-papel.png" alt="Página inicial no tema Papel"><br><sub><b>Folha 00 · Apresentação</b> — tema Papel, ficha técnica e cota back-end ↔ front-end.</sub></td>
-    <td width="50%"><img src=".github/assets/screenshots/home-blueprint.jpg" alt="Página inicial no tema Blueprint"><br><sub><b>Tema Blueprint</b> — a mesma folha em planta azul. O carimbo e o robô ficam no canto.</sub></td>
+    <td width="50%"><img src=".github/assets/screenshots/home-papel.png" alt="Página inicial no tema Papel"><br><sub><b>Folha 00 · Apresentação</b>: tema Papel, ficha técnica e cota back-end ↔ front-end.</sub></td>
+    <td width="50%"><img src=".github/assets/screenshots/home-blueprint.jpg" alt="Página inicial no tema Blueprint"><br><sub><b>Tema Blueprint</b>: a mesma folha em planta azul. O carimbo e o robô ficam no canto.</sub></td>
   </tr>
   <tr>
-    <td><img src=".github/assets/screenshots/diagrama-blueprint.jpg" alt="Diagrama de arquitetura vivo"><br><sub><b>Diagrama vivo</b> — a arquitetura da Next Devices, com pacotes de telemetria correndo pelas conexões.</sub></td>
-    <td><img src=".github/assets/screenshots/projetos.jpg" alt="Lista de projetos"><br><sub><b>Projetos</b> — cada projeto com tipo, plataforma e o que dá para abrir (online, código aberto ou privado).</sub></td>
+    <td><img src=".github/assets/screenshots/diagrama-blueprint.jpg" alt="Diagrama de arquitetura vivo"><br><sub><b>Diagrama vivo</b>: a arquitetura da Next Devices, com pacotes de telemetria correndo pelas conexões.</sub></td>
+    <td><img src=".github/assets/screenshots/projetos.jpg" alt="Lista de projetos"><br><sub><b>Projetos</b>: cada projeto com tipo, plataforma e o que dá para abrir (online, código aberto ou privado).</sub></td>
   </tr>
   <tr>
-    <td><img src=".github/assets/screenshots/projeto.png" alt="Página de um projeto"><br><sub><b>Página do projeto</b> — ficha do projeto, destaques, stack e galeria.</sub></td>
-    <td><img src=".github/assets/screenshots/telemetria.jpg" alt="Telemetria do GitHub"><br><sub><b>Telemetria</b> — commits por semana nos últimos 12 meses, atualizado uma vez por dia.</sub></td>
+    <td><img src=".github/assets/screenshots/projeto.png" alt="Página de um projeto"><br><sub><b>Página do projeto</b>: ficha do projeto, destaques, stack e galeria.</sub></td>
+    <td><img src=".github/assets/screenshots/telemetria.jpg" alt="Telemetria do GitHub"><br><sub><b>Telemetria</b>: commits por semana nos últimos 12 meses, atualizado uma vez por dia.</sub></td>
   </tr>
   <tr>
-    <td><img src=".github/assets/screenshots/robotica.png" alt="Página de robótica"><br><sub><b>Robótica</b> — três equipes, dois mundiais e a faixa de números que conta ao aparecer.</sub></td>
-    <td><img src=".github/assets/screenshots/linha-do-tempo.jpg" alt="Linha do tempo das conquistas"><br><sub><b>Linha do tempo</b> — 32 registros de 2017 a 2024, com filtros e uma foto em cada.</sub></td>
+    <td><img src=".github/assets/screenshots/robotica.png" alt="Página de robótica"><br><sub><b>Robótica</b>: três equipes, dois mundiais e a faixa de números.</sub></td>
+    <td><img src=".github/assets/screenshots/linha-do-tempo.jpg" alt="Linha do tempo das conquistas"><br><sub><b>Linha do tempo</b>: 28 registros de 2018 a 2024, com filtros e uma foto em cada.</sub></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src=".github/assets/screenshots/visualizador.jpg" alt="Visualizador de fotos" width="75%"><br><sub><b>Visualizador</b> — foto ampliada, descrição, link para o registro original e navegação com ← →.</sub></td>
+    <td colspan="2" align="center"><img src=".github/assets/screenshots/visualizador.jpg" alt="Visualizador de fotos" width="75%"><br><sub><b>Visualizador</b>: foto ampliada, descrição, link para o registro original e navegação com ← →.</sub></td>
   </tr>
 </table>
 
@@ -88,7 +88,7 @@ A resposta virou uma linguagem visual de **desenho técnico**:
 
 ## O que tem no site
 
-### `/` — Início
+### `/`: Início
 
 | Folha | Conteúdo |
 |---|---|
@@ -101,21 +101,33 @@ A resposta virou uma linguagem visual de **desenho técnico**:
 | **06 · Sobre** | Texto pessoal, as fotos de viagem passando uma a uma e a trajetória em capítulos. |
 | **07 · Contato** | Email, WhatsApp, LinkedIn e GitHub. |
 
-### `/robotica` — Robótica
+### `/robotica`: Robótica
 
-- Abertura com o papel nas competições de 2023 (algoritmos de navegação autônoma e manipulação com IA e IoT) e a **faixa de números**: 33 conquistas, 8 anos, 2 mundiais e 3 equipes, cada um com a explicação de onde vem.
+- Abertura com o papel nas competições de 2023 (algoritmos de navegação autônoma e manipulação de objetos) e a **faixa de números**: 27 conquistas, 7 anos, 2 mundiais e 3 equipes, cada um com a explicação de onde vem. Os números são calculados a partir dos registros, então acompanham a linha do tempo.
 - **Destaques**: o **mapa de rotas** de 2023 (Resende → Houston e Resende → Wolfenbüttel, traçado pela rolagem), FRC World Championship e FIRA RoboWorld Cup.
-- **Linha do tempo**: os 32 registros com foto, filtráveis em Robótica, Hackathons, Olimpíadas e Outros. Clicar abre o visualizador.
+- **Linha do tempo**: os 28 registros de robótica com foto, filtráveis em Robótica e Outros. Clicar abre o visualizador.
 - **Equipes**: as três equipes em lista, cada uma abrindo a sua folha em `/robotica/equipes`.
+- No fim, um atalho para **Hackathons e olimpíadas**, que ficam numa página própria.
 
-### `/robotica/equipes` — Equipes
+### `/robotica/equipes`: Equipes
 
 As três equipes como três fases, da mais antiga à mais recente: um **cronograma** com os períodos na mesma escala de tempo e, para cada time, foto, ficha, prêmios em destaque e todos os registros dele (puxados da linha do tempo pelo campo `team`). No desktop, a ficha da equipe fica fixa enquanto os registros rolam.
 
-### `/projetos/[slug]` — Página de cada projeto
+### `/competicoes`: Hackathons e olimpíadas
+
+O que fica fora da robótica, com o mesmo desenho das outras páginas:
+
+- **Hackathons**: 1º lugar no Hackathon ConstruTech 2024 e prêmio Melhor Código no Hacking.Rio 2021, cada um com foto, resultado, ficha e link para o registro original.
+- **Olimpíadas**: as menções honrosas na OMERJ 2017 e na OBMEP 2019.
+
+Os registros vêm de `achievements.ts` pelo campo `group` (`hackathons` e `olimpiadas`), então não aparecem na linha do tempo da robótica.
+
+### `/projetos/[slug]`: Página de cada projeto
 
 Gerada estaticamente para cada item da lista. Mostra ficha (tipo, plataforma, acesso, onde, ano e papel), descrição, destaques, stack, galeria e navegação para o projeto anterior e o próximo. Projetos privados explicam por que não há link nem código público.
 
+> **Navegação:** o topo mostra as folhas da página e links para as outras páginas (na home, Robótica e Competições). Em telas a partir de 1440px a barra alarga e mostra a numeração; entre 1280 e 1439px a numeração some para caber tudo; abaixo disso, tudo vai para o menu **Índice**. O rodapé de todas as páginas também leva a Início, Robótica e Competições.
+>
 > **Idiomas:** o site inteiro existe em português (na raiz, `/robotica`) e em inglês (em `/en`, `/en/robotica`). O seletor PT / EN fica no topo, ao lado dos temas.
 >
 > O antigo `/info` redireciona para `/#sobre`. Endereços que não existem caem numa **folha 404** no mesmo estilo.
@@ -128,7 +140,7 @@ Todo movimento tem uma função, e **com `prefers-reduced-motion` ativo o site f
 
 | Onde | O que acontece |
 |---|---|
-| **Seções** | Elementos entram com fade e um leve deslocamento, escalonados entre irmãos. As cotas se desenham da esquerda para a direita e as figuras são "plotadas". |
+| **Seções** | Só o título de cada folha entra com fade e um leve deslocamento; o resto já está no lugar. As cotas se desenham da esquerda para a direita e as figuras são "plotadas". |
 | **Diagrama de arquitetura** | Caixas e conexões se montam ao entrar na tela. Pacotes laranja percorrem as setas o tempo todo (`<animateMotion>`). Passar o mouse numa caixa destaca só os fluxos dela, em CSS puro com `:has()`. |
 | **Troca de tema** | Três temas (Papel, Blueprint e Grafite). Ir para a direita na lista revela o novo tema com uma varredura de cima para baixo, e voltar sobe, via **View Transitions API**. Sem suporte, a troca é instantânea. |
 | **Fotos do Sobre** | As fotos passam sozinhas, a cada 3,4 s, como cópias saindo de uma copiadora heliográfica: uma linha laranja varre o quadro de cima para baixo, a foto nova aparece em tons de blueprint e revela as cores, depois desliza devagar. Os segmentos no topo marcam o tempo; pausa com o mouse em cima, com foco ou fora da tela. |
@@ -140,10 +152,9 @@ Todo movimento tem uma função, e **com `prefers-reduced-motion` ativo o site f
 | **Régua lateral** | Em telas largas, uma régua na margem esquerda mapeia a página inteira: um traço por folha (clicável) e um marcador com a posição de leitura. |
 | **Cronograma das equipes** | As barras dos períodos se desenham da esquerda para a direita. |
 | **Telemetria** | Passar o mouse (ou usar ← →) no gráfico de commits move uma agulha sobre a escala e lê a semana e o total. |
-| **Documento tarjado** | Nos projetos privados, a galeria mostra um documento "de uso interno": as tarjas riscam os campos uma a uma e o carimbo "confidencial" bate no final. |
-| **Números da robótica** | Contam do zero até o valor quando aparecem. |
+| **Documento tarjado** | Nos projetos privados, a galeria mostra um documento "de uso interno": as tarjas riscam os campos uma a uma e o carimbo "confidencial" bate seco no final. |
 | **Linha do tempo** | O traço vertical se preenche conforme a rolagem. |
-| **Carimbo e robô** | O carimbo mostra a folha e a seção atuais, e o robô troca de frase a cada seção. |
+| **Carimbo** | Mostra a folha e a seção atuais. |
 | **Barra de progresso** | Uma linha laranja de 2px no topo acompanha a leitura. |
 
 ---
@@ -179,18 +190,19 @@ src/
 │   ├── icon.svg                # favicon (logo pixel em bloco escuro)
 │   ├── apple-icon.tsx          # ícone da tela inicial, gerado a partir do mapa de pixels
 │   ├── projetos/[slug]/        # página do projeto e a galeria com visualizador
+│   ├── competicoes/page.tsx    # hackathons e olimpíadas
 │   └── robotica/
 │       ├── page.tsx
-│       ├── achievement-log.tsx # linha do tempo com filtros e visualizador
+│       ├── achievement-log.tsx # linha do tempo com filtros e visualizador, por grupo de registros
 │       ├── route-chart.tsx     # mapa de rotas de 2023, cena fixa traçada pela rolagem
 │       ├── route-map-data.ts   # máscara de terra do mapa (Natural Earth 1:110m)
 │       ├── equipes/page.tsx    # as três equipes, com cronograma e registros
-│       └── stat-counters.tsx   # faixa de números com contagem
+│       └── stat-counters.tsx   # faixa de números
 ├── components/
 │   ├── logo.tsx                # mapa de pixels da marca, LogoMark e LogoLockup
 │   ├── pixel-robot.tsx         # o mascote
-│   ├── title-block.tsx         # carimbo do canto e falas do robô
-│   ├── topbar.tsx              # navegação com a folha ativa e menu no celular
+│   ├── title-block.tsx         # carimbo do canto, com o robô em pé
+│   ├── topbar.tsx              # navegação com a folha ativa, links entre páginas e menu Índice
 │   ├── arch-diagram.tsx        # diagrama vivo da Next Devices
 │   ├── stack-exploded.tsx      # vista explodida da stack, montada pela rolagem
 │   ├── scroll-ruler.tsx        # régua lateral com a posição na página
@@ -198,16 +210,16 @@ src/
 │   ├── signal-chart.tsx        # barras do gráfico com a agulha de leitura
 │   ├── redacted.tsx            # documento tarjado dos projetos privados
 │   ├── project-list.tsx        # cards de projetos com prévia e abas por área
-│   ├── scroll-fx.tsx           # revelação no scroll, progresso (--p) das peças animadas e FxReady
+│   ├── scroll-fx.tsx           # revelação no scroll (títulos e peças animadas), progresso (--p) das peças animadas e FxReady
 │   ├── theme-toggle.tsx        # Papel / Blueprint / Grafite com varredura, e o seletor PT / EN
 │   ├── photo-reel.tsx          # fotos de viagem passando no Sobre
 │   └── ui.tsx                  # Section, Dimension, Figure, Chips, Footer…
 └── content/                    # todo o texto do site, separado do layout
-    ├── site.ts                 # links sociais e navegação por página
+    ├── site.ts                 # links sociais, folhas e links de cada página
     ├── work.ts                 # experiências, competências e formação
     ├── projects.ts             # projetos, tipos, plataformas e acesso
-    ├── achievements.ts         # os 32 registros de competições
-    ├── robotica.ts             # números, destaques e equipes
+    ├── achievements.ts         # os 32 registros: robótica, hackathons e olimpíadas
+    ├── robotica.ts             # números (calculados dos registros), destaques e equipes
     └── info.ts                 # sobre, capítulos e canais de contato
 
 public/
@@ -227,7 +239,7 @@ Em `src/content/projects.ts`, cada projeto é classificado em **três eixos inde
 
 | Eixo | Valores |
 |---|---|
-| `kind`: o que é | `produto` · `sistema-interno` · `cliente` · `desafio-tecnico` · `estudo` · `pessoal` · `hackathon` |
+| `kind`: o que é | `produto` · `sistema-interno` · `cliente` · `desafio-tecnico` · `estudo` · `pessoal` · `hackathon` · `competicao` · `jogo` |
 | `platforms`: onde roda | `web` · `mobile` · `api` · `iot` · `desktop` |
 | `access`: o que dá para abrir | `online` · `codigo-aberto` · `privado` · `em-breve` |
 | `areas`: abas onde aparece | `empresa` · `web` · `mobile` · `robotica` (e `featured: true` para Destaques) |
@@ -256,7 +268,7 @@ A página do projeto é gerada sozinha. Imagens sem `src` aparecem como "foto pe
 
 ### Adicionar uma conquista
 
-Coloque a foto em `public/images/conquistas/` e acrescente um item em `src/content/achievements.ts`. Os filtros, a contagem por categoria e o visualizador se ajustam sozinhos.
+Coloque a foto em `public/images/conquistas/` e acrescente um item em `src/content/achievements.ts`. O campo `group` decide a página: `robotica` e `outros` vão para a linha do tempo da robótica, `hackathons` e `olimpiadas` para `/competicoes`. Os filtros, os números da robótica e o visualizador se ajustam sozinhos.
 
 ### Trocar a logo
 
@@ -309,6 +321,7 @@ Alguns problemas que apareceram no caminho e como foram resolvidos:
 - **Cores em SVG.** Atributos de apresentação (`fill="…"`) não aceitam `var()` de forma confiável, então as cores dos SVGs vão em `style`, e o diagrama e a logo acompanham o tema.
 - **View Transitions com escopo.** A animação customizada da troca de tema só vale enquanto `[data-scan]` está presente, para não desligar as transições entre páginas.
 - **Animação guiada pela rolagem sem biblioteca.** Qualquer elemento com `data-scrub` recebe a variável `--p` (0 → 1) conforme atravessa a tela, e o CSS deriva dela o que precisar (`calc`, `clamp`, `offset-distance`). As páginas continuam sendo server components. Com `data-scrub="pin"`, o progresso corre enquanto um filho `sticky` fica preso na tela (o mapa de rotas).
+- **Revisão do carimbo.** O `Rev.` do carimbo e do rodapé vem de `NEXT_PUBLIC_REV`, definido em `next.config.ts` com o ano e o mês do build (`26.11`). Cada deploy atualiza sozinho.
 - **Telemetria com cache.** O gráfico do GitHub é um server component com `"use cache"` e `cacheLife("days")`. A página continua estática e se revalida uma vez por dia.
 - **Logo em pixels inteiros.** O mapa de 6 × 10 é centralizado num bloco de 16 unidades, para que no favicon de 16px cada pixel da marca caia num pixel da tela.
 
@@ -344,7 +357,7 @@ Alguns problemas que apareceram no caminho e como foram resolvidos:
 ## SEO e prévia de links
 
 - Cada página tem título, descrição, URL canônica e versões PT/EN (`hreflang`), em `src/i18n/seo.ts`.
-- **Prévia ao colar o link** (WhatsApp, LinkedIn, X): cada página gera a sua imagem 1200 × 630 no estilo do site — folha, título e dados da página —, em PT e em EN. O desenho fica em `src/app/_og/card.tsx`; cada rota tem o seu `opengraph-image.tsx`.
+- **Prévia ao colar o link** (WhatsApp, LinkedIn, X): cada página gera a sua imagem 1200 × 630 no estilo do site (folha, título e dados da página), em PT e em EN. O desenho fica em `src/app/_og/card.tsx`; cada rota tem o seu `opengraph-image.tsx`.
 - `sitemap.xml` e `robots.txt` são gerados (`src/app/sitemap.ts` e `src/app/robots.ts`).
 - O endereço público é `https://www.cauacampos.dev` (o domínio sem `www` redireciona). Para outro domínio, defina `NEXT_PUBLIC_SITE_URL`.
 - Endereços do site anterior continuam funcionando: `/achievements` → `/robotica#linha-do-tempo`, `/teams` → `/robotica/equipes` e `/cv-caua.pdf` (que agora leva ao currículo atual, `/cv_CauaCampos.pdf`).
@@ -375,7 +388,7 @@ Não precisa de `vercel.json`: o Next é detectado sozinho e o build é `npm run
 <img src="public/brand/logo-mark-dark.svg#gh-light-mode-only" width="40" alt="">
 <img src="public/brand/logo-mark-light.svg#gh-dark-mode-only" width="40" alt="">
 
-<sub>Desenhado e construído por Cauã Campos · Resende, RJ · 2026</sub><br>
+<sub>Feito à mão por Cauã Campos · Resende, RJ · 2026</sub><br>
 <sub>Textos, fotos e marca © Cauã Campos.</sub>
 
 </div>
