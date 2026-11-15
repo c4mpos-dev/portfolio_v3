@@ -37,7 +37,7 @@ function Thumb({ p, lang, eager }: { p: Project; lang: Lang; eager?: boolean }) 
       <div className="flex size-full items-center justify-center gap-3 bg-paper px-4 pt-4">
         {tall.map((s) => (
           <div key={s.src} className="relative h-full w-[34%] overflow-hidden rounded-t-[10px] border border-b-0 border-line">
-            <Image src={s.src!} alt="" fill sizes="160px" loading={loading} className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
+            <Image src={s.src!} alt="" fill sizes="160px" loading={loading} className="object-cover object-top" />
           </div>
         ))}
       </div>
@@ -51,7 +51,7 @@ function Thumb({ p, lang, eager }: { p: Project; lang: Lang; eager?: boolean }) 
         fill
         sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
         loading={loading}
-        className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        className="object-cover object-top"
       />
     );
   }
@@ -114,7 +114,7 @@ export function ProjectList() {
 
       <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {current.items.map((p, idx) => (
-          <li key={p.slug} data-r="" className="reveal">
+          <li key={p.slug}>
             <Link
               href={localePath(lang, `/projetos/${p.slug}`)}
               className="group flex h-full flex-col border border-line bg-sheet transition-colors hover:border-accent"
@@ -126,16 +126,16 @@ export function ProjectList() {
               <div className="flex flex-1 flex-col p-4">
                 <div className="font-mono text-[10.5px] tracking-[0.08em] text-faint uppercase">
                   {KINDS[p.kind]}
-                  {p.year && ` · ${p.year.replace(/\s/g, "")}`}
+                  {p.year && ` · ${p.year}`}
                   {p.org && ` · ${p.org}`}
                 </div>
                 <ViewTransition name={`project-title-${p.slug}`} share="morph" default="none">
-                  <h4 className="mt-1.5 w-fit text-[16px] leading-snug font-semibold group-hover:text-accent">{p.name}</h4>
+                  <h3 className="mt-1.5 w-fit text-[16px] leading-snug font-semibold group-hover:text-accent">{p.name}</h3>
                 </ViewTransition>
                 <p className="mt-1.5 line-clamp-3 text-[13.5px] leading-snug text-muted">{p.summary}</p>
                 <div className="mt-auto flex items-center justify-between gap-3 pt-4">
                   <AccessBadge access={p.access} lang={lang} />
-                  <span aria-hidden className="font-mono text-muted transition-transform group-hover:translate-x-1 group-hover:text-accent">
+                  <span aria-hidden className="font-mono text-muted group-hover:text-accent">
                     →
                   </span>
                 </div>

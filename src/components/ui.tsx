@@ -58,18 +58,18 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} data-section="" className="pt-[clamp(88px,14vh,160px)]">
+    <section id={id} aria-label={label} data-section="" className="pt-[clamp(88px,14vh,160px)]">
       <Reveal>
         <div className="label">
-          <span className="text-accent">{tr(lang, "Folha", "Sheet")} {String(index).padStart(2, "0")}</span> / {label}
+          <span className="text-accent">{tr(lang, "Folha", "Sheet")} {String(index).padStart(2, "0")}</span>
         </div>
         <h2 className="display mt-4 max-w-[20ch] text-[clamp(2rem,4.6vw,3.4rem)] leading-[1.02]">{title}</h2>
       </Reveal>
       {dimension && <Dimension label={dimension} className="mt-6" />}
       {lead && (
-        <Reveal>
+        <div>
           <p className="mt-6 max-w-[62ch] text-[16px] leading-relaxed text-ink-2">{lead}</p>
-        </Reveal>
+        </div>
       )}
       <div className="mt-[clamp(32px,5vh,48px)]">{children}</div>
     </section>
@@ -138,7 +138,7 @@ export function Figure({
         </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. {fig}</span> — {caption}
+        <span className="text-accent">FIG. {fig}</span> · {caption}
       </figcaption>
     </figure>
   );
@@ -153,13 +153,16 @@ export function Footer({ lang = "pt" }: { lang?: Lang }) {
       <div className="flex items-center gap-2 border-b border-line px-3 py-2.5 text-ink sm:border-r sm:border-b-0">
         <LogoMark className="size-4" /> Cauã Campos
       </div>
-      <div className="border-b border-line px-3 py-2.5 sm:border-r sm:border-b-0">© 2026 · {tr(lang, "desenhado e construído por mim", "designed and built by me")} · rev. 26.10</div>
+      <div className="border-b border-line px-3 py-2.5 sm:border-r sm:border-b-0">© 2026 · {tr(lang, "feito à mão em Next.js", "hand-built in Next.js")} · rev. {process.env.NEXT_PUBLIC_REV}</div>
       <div className="flex gap-4 px-3 py-2.5">
         <Link href={localePath(lang, "/")} className="hover:text-accent">
           {tr(lang, "Início", "Home")}
         </Link>
         <Link href={localePath(lang, "/robotica")} className="hover:text-accent">
           {tr(lang, "Robótica", "Robotics")}
+        </Link>
+        <Link href={localePath(lang, "/competicoes")} className="hover:text-accent">
+          {tr(lang, "Competições", "Competitions")}
         </Link>
         <a href={social.github} target="_blank" rel="noreferrer" className="hover:text-accent">
           GitHub ↗

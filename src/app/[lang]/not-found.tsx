@@ -10,7 +10,7 @@ export default async function NotFound() {
 
   return (
     <main>
-      <title>{tr(lang, "Folha não encontrada — Cauã Campos", "Sheet not found — Cauã Campos")}</title>
+      <title>{tr(lang, "Folha não encontrada | Cauã Campos", "Sheet not found | Cauã Campos")}</title>
       <header className="pt-[clamp(56px,12vh,130px)]">
         <div className="label">
           <span className="text-accent">{tr(lang, "Folha", "Sheet")} 404</span> / {tr(lang, "Fora do conjunto de desenhos", "Not in the drawing set")}
@@ -26,7 +26,7 @@ export default async function NotFound() {
         />
 
         <div className="mt-10 flex items-start gap-5">
-          <PixelRobot size={64} className="shrink-0 animate-bob" />
+          <PixelRobot size={36} className="shrink-0 animate-bob" />
           <div>
             <p className="max-w-[52ch] text-[18px] leading-relaxed text-ink-2">
               {tr(

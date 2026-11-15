@@ -73,7 +73,7 @@ export function RouteChart({ lang = "pt" }: { lang?: Lang }) {
           <div data-r="" className="border border-line bg-sheet font-mono">
             <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-line px-4 py-2.5 text-[11px] tracking-[0.06em] text-muted uppercase">
               <span>
-                <span className="animate-blink text-accent">●</span> {tr(lang, "Carta de rotas", "Route chart")} · 2023
+                <span className="text-accent">●</span> {tr(lang, "Carta de rotas", "Route chart")} · 2023
               </span>
               <span className="hidden text-faint sm:inline">{tr(lang, "rotas em grande círculo · origem: Resende", "great-circle routes · origin: Resende")}</span>
             </div>
@@ -196,7 +196,7 @@ export function RouteChart({ lang = "pt" }: { lang?: Lang }) {
           </div>
         </div>
         <figcaption className="mt-2 font-mono text-[11px] text-muted">
-          <span className="text-accent">FIG. 01</span> —{" "}
+          <span className="text-accent">FIG. 01</span> ·{" "}
           {tr(
             lang,
             `Os dois mundiais de 2023 no mapa: ${km(legs.reduce((s, l) => s + l.km, 0))} km em linha reta, somando as duas idas. Role para traçar.`,

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense, ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import { AccessBadge } from "@/components/access-badge";
-import { Chips, Dimension, Footer, Reveal, Section } from "@/components/ui";
+import { Chips, Dimension, Footer, Section } from "@/components/ui";
 import { projects } from "@/content/projects";
 import { accessFor, getProjectFor, kindsFor, platformsFor, projectsFor } from "@/content/projects-en";
 import { isLang, localePath, tr } from "@/i18n";
@@ -93,7 +93,7 @@ async function ProjectContent({ params }: { params: PageProps<"/[lang]/projetos/
 
       <Section id="visao-geral" index={1} label={tr(lang, "Visão geral", "Overview")} title={tr(lang, "Sobre o projeto.", "About the project.")} lang={lang}>
         <div className="grid items-start gap-10 desk:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-          <Reveal className="grid gap-5">
+          <div className="grid gap-5">
             {p.about?.map((t) => (
               <p key={t} className="text-[16px] leading-relaxed text-ink-2">
                 {t}
@@ -116,9 +116,9 @@ async function ProjectContent({ params }: { params: PageProps<"/[lang]/projetos/
               <div className="label mb-2 text-[10px]">Stack</div>
               <Chips items={p.stack} />
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal>
+          <div>
             <dl className="crop border border-line bg-sheet font-mono text-[12px]">
               {spec.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[96px_1fr] border-b border-line-soft last:border-b-0">
@@ -149,7 +149,7 @@ async function ProjectContent({ params }: { params: PageProps<"/[lang]/projetos/
                 </p>
               )}
             </div>
-          </Reveal>
+          </div>
         </div>
       </Section>
 

@@ -5,14 +5,14 @@ import { SignalChart } from "./signal-chart";
 
 type Day = { date: string; count: number };
 
-async function getContributions(user: string): Promise<{ total: number; days: Day[] } | null> {
+async function getContributions(user: string): Promise<{ total: number; days: Day[]; fetched: string } | null> {
   "use cache";
   cacheLife("days");
   try {
     const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${user}?y=last`);
     if (!res.ok) return null;
     const data: { total: { lastYear: number }; contributions: Day[] } = await res.json();
-    return { total: data.total.lastYear, days: data.contributions };
+    return { total: data.total.lastYear, days: data.contributions, fetched: new Date().toISOString().slice(0, 10) };
   } catch {
     return null;
   }
@@ -34,7 +34,7 @@ export async function Telemetry({ lang = "pt" }: { lang?: Lang }) {
   if (!data) {
     return (
       <div className="border border-line bg-sheet p-6 font-mono text-[13px] text-muted">
-        <span className="text-accent">● {tr(lang, "SEM SINAL", "NO SIGNAL")}</span> — {tr(lang, "não consegui ler o GitHub agora.", "couldn't read GitHub right now.")}{" "}
+        <span className="text-accent">● {tr(lang, "SEM SINAL", "NO SIGNAL")}</span>: {tr(lang, "não consegui ler o GitHub agora.", "couldn't read GitHub right now.")}{" "}
         <a href={social.github} target="_blank" rel="noreferrer" className="link-u">
           {tr(lang, "ver direto", "see it there")} ↗
         </a>
@@ -55,16 +55,18 @@ export async function Telemetry({ lang = "pt" }: { lang?: Lang }) {
     { k: tr(lang, "Total / 12 meses", "Total / 12 months"), v: num(data.total) },
     { k: tr(lang, "Pico semanal", "Weekly peak"), v: num(peak) },
     { k: tr(lang, "Média semanal", "Weekly average"), v: num(avg) },
-    { k: tr(lang, "Último sinal", "Last signal"), v: lastActive ? fmtDate(lastActive.date, lang) : "—" },
+    { k: tr(lang, "Último sinal", "Last signal"), v: lastActive ? fmtDate(lastActive.date, lang) : "-" },
   ];
 
   return (
     <div className="crop border border-line bg-sheet">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-2.5 font-mono text-[11px] tracking-[0.06em] text-muted uppercase">
         <span>
-          <span className="animate-blink text-accent">●</span> {tr(lang, "Canal", "Channel")}: github.com/{social.githubUser}
+          <span className="text-accent">●</span> {tr(lang, "Canal", "Channel")}: github.com/{social.githubUser}
         </span>
-        <span>{tr(lang, "commits / semana · atualizado 1×/dia", "commits / week · updated daily")}</span>
+        <span>
+          {tr(lang, "commits / semana · atualizado", "commits / week · updated")} {fmtDate(data.fetched, lang)}
+        </span>
       </div>
 
       <div className="relative px-4 pt-6 pb-3">
