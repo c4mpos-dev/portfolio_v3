@@ -1,5 +1,7 @@
 import { cacheLife } from "next/cache";
 import { social } from "@/content/site";
+import { tr, type Lang } from "@/i18n";
+import { SignalChart } from "./signal-chart";
 
 type Day = { date: string; count: number };
 
@@ -16,24 +18,25 @@ async function getContributions(user: string): Promise<{ total: number; days: Da
   }
 }
 
-const fmtDate = (iso: string) => {
+const fmtDate = (iso: string, lang: Lang = "pt") => {
   const [, m, d] = iso.split("-");
-  return `${d}/${m}`;
+  return lang === "en" ? `${m}/${d}` : `${d}/${m}`;
 };
 
 /**
  * GitHub activity read like a telemetry trace: one bar per week over the
- * last year, plus readouts. Cached for a day.
+ * last year (read with a needle, see SignalChart), plus readouts. Cached for a day.
  */
-export async function Telemetry() {
+export async function Telemetry({ lang = "pt" }: { lang?: Lang }) {
+  const num = (n: number) => n.toLocaleString(lang === "en" ? "en-US" : "pt-BR");
   const data = await getContributions(social.githubUser);
 
   if (!data) {
     return (
       <div className="border border-line bg-sheet p-6 font-mono text-[13px] text-muted">
-        <span className="text-accent">● SEM SINAL</span> — não consegui ler o GitHub agora.{" "}
+        <span className="text-accent">● {tr(lang, "SEM SINAL", "NO SIGNAL")}</span> — {tr(lang, "não consegui ler o GitHub agora.", "couldn't read GitHub right now.")}{" "}
         <a href={social.github} target="_blank" rel="noreferrer" className="link-u">
-          ver direto ↗
+          {tr(lang, "ver direto", "see it there")} ↗
         </a>
       </div>
     );
@@ -49,46 +52,36 @@ export async function Telemetry() {
   const lastActive = [...data.days].reverse().find((d) => d.count > 0);
 
   const readouts = [
-    { k: "Total / 12 meses", v: data.total.toLocaleString("pt-BR") },
-    { k: "Pico semanal", v: peak.toLocaleString("pt-BR") },
-    { k: "Média semanal", v: avg.toLocaleString("pt-BR") },
-    { k: "Último sinal", v: lastActive ? fmtDate(lastActive.date) : "—" },
+    { k: tr(lang, "Total / 12 meses", "Total / 12 months"), v: num(data.total) },
+    { k: tr(lang, "Pico semanal", "Weekly peak"), v: num(peak) },
+    { k: tr(lang, "Média semanal", "Weekly average"), v: num(avg) },
+    { k: tr(lang, "Último sinal", "Last signal"), v: lastActive ? fmtDate(lastActive.date, lang) : "—" },
   ];
 
   return (
     <div className="crop border border-line bg-sheet">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-4 py-2.5 font-mono text-[11px] tracking-[0.06em] text-muted uppercase">
         <span>
-          <span className="animate-blink text-accent">●</span> Canal: github.com/{social.githubUser}
+          <span className="animate-blink text-accent">●</span> {tr(lang, "Canal", "Channel")}: github.com/{social.githubUser}
         </span>
-        <span>commits / semana · atualizado 1×/dia</span>
+        <span>{tr(lang, "commits / semana · atualizado 1×/dia", "commits / week · updated daily")}</span>
       </div>
 
       <div className="relative px-4 pt-6 pb-3">
         {/* Scope gridlines */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-4 top-6 bottom-3 flex flex-col justify-between">
+        <div aria-hidden className="pointer-events-none absolute inset-x-4 top-[52px] bottom-[34px] flex flex-col justify-between">
           {[0, 1, 2, 3].map((i) => (
             <span key={i} className="border-t border-dashed border-line-soft" />
           ))}
         </div>
-        <div
-          data-r=""
-          role="img"
-          aria-label={`${data.total} contribuições no último ano; pico de ${peak} em uma semana`}
-          className="relative flex h-40 items-end gap-[2px]"
-        >
-          {weeks.map((w, i) => (
-            <span
-              key={w.start}
-              title={`semana de ${fmtDate(w.start)}: ${w.count}`}
-              className={`sig flex-1 ${w.count === peak ? "bg-accent" : "bg-ink/70"}`}
-              style={{ height: `${Math.max(2, (w.count / peak) * 100)}%`, transitionDelay: `${i * 14}ms` }}
-            />
-          ))}
-        </div>
+        <SignalChart
+          weeks={weeks.map((w) => ({ start: fmtDate(w.start, lang), count: w.count }))}
+          peak={peak}
+          summary={tr(lang, `${data.total} contribuições no último ano; pico de ${peak} em uma semana.`, `${data.total} contributions in the last year; peak of ${peak} in one week.`)}
+        />
         <div className="mt-2 flex justify-between font-mono text-[10px] text-faint">
-          <span>{fmtDate(weeks[0].start)}</span>
-          <span>hoje</span>
+          <span>{fmtDate(weeks[0].start, lang)}</span>
+          <span>{tr(lang, "hoje", "today")}</span>
         </div>
       </div>
 
