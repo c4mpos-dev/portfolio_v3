@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { stats } from "@/content/robotica";
+import { stats, statsFor } from "@/content/robotica";
+import { useLang } from "@/i18n/lang-context";
 
 /** Counts from 0 to `to` once the element is on screen. Shows the final value with reduced motion. */
 function useCountUp(to: number, el: React.RefObject<HTMLElement | null>) {
@@ -57,9 +58,10 @@ function Stat({ n, label, detail, index }: (typeof stats)[number] & { index: num
 
 /** The four robotics numbers as one readout strip; they count up when they come into view. */
 export function StatCounters() {
+  const lang = useLang();
   return (
     <dl className="grid grid-cols-2 border-y-2 border-ink sm:grid-cols-4">
-      {stats.map((s, i) => (
+      {statsFor(lang).map((s, i) => (
         <Stat key={s.label} {...s} index={i} />
       ))}
     </dl>

@@ -1,3 +1,5 @@
+import { localeDate, localizeList, type Lang } from "@/i18n";
+
 // Generated from cauacampos.dev/achievements (the previous portfolio). Edit freely.
 
 export type AchievementGroup =
@@ -492,3 +494,100 @@ export const achievements: Achievement[] = [
     link: "https://www.pirai.rj.gov.br/component/k2/alunso-da-rede-muncipal-destaques-em-olimpiadas-de-conhecimento-sao-homenageados",
   },
 ];
+
+// English
+
+const ACHIEVEMENT_GROUPS_EN: Record<AchievementGroup, string> = {
+  robotica: "Robotics",
+  hackathons: "Hackathons",
+  olimpiadas: "Olympiads",
+  outros: "Other",
+};
+
+const ACHIEVEMENTS_EN: Record<string, Partial<Achievement>> = {
+  "hackathon-construtech-2024": {
+    title: "2nd ConstruTech Hackathon",
+    description: "Team INTLOG took 1st place at the 2024 ConstruTech Hackathon with a new solution for the construction industry.",
+  },
+  "iron-cup-2024": { category: "Event", description: "I worked as event staff in the Combat category." },
+  "off-season-2023": {
+    description: "3rd place overall and winner of the Engineering Award at the 2023 FRC Off-Season in Rio de Janeiro.",
+  },
+  "fira-roboworld-cup-2023": { place: "Wolfenbüttel, Germany", description: "3rd place in Tug of War and in Mission Impossible Hardware." },
+  "frc-houston": { place: "Houston, USA", description: "We won the Rookie Inspiration Award in the Curie division." },
+  "frc-brasilia": {
+    description: "We won the competition's Rookie All-Star award, which earned us a spot at the world championship in Houston.",
+  },
+  "fll-superpowered": {
+    description: "3rd place overall at the FLL Superpowered national robotics tournament: the Champion's Award.",
+  },
+  "fira-nacional": {
+    title: "FIRA National",
+    description: "4th place in Mission Impossible, which qualified us for the world championship in Germany.",
+  },
+  "fira-regional-rj": { description: "Champions in Tug of War and Mission Impossible." },
+  "fll-cargoconnect": { description: "2nd place in the Innovation Project category at the state stage." },
+  "tjr-nacional-2021": { title: "TJR National", description: "4th place in the Sumo category." },
+  "tbr-nacional-2021": { title: "TBR National", description: "Our team presented a solid social project built around the season's theme." },
+  "hacking-rio": {
+    description: "Team SmartHack won the Best Code award. We also received a motion of praise from the Resende city council.",
+  },
+  "tjr-regional-2021": { description: "Our team won the Sumo category." },
+  "obrvs-nacional-2021": { title: "OBR Virtual Simulation – National" },
+  "tbr-regional-2021": { description: "The team presented a very solid project on the theme and qualified for the national stage." },
+  "obrvs-estadual-2021": {
+    title: "OBR Virtual Simulation – State",
+    description: "We took 2nd place, which qualified us for the national stage.",
+  },
+  "obrvs-nacional-2020": {
+    title: "OBR Virtual Simulation – National",
+    description: "Our team worked through many challenges and finished 27th in Brazil, featured on the OBR cover.",
+  },
+  "obrvs-estadual-2020": {
+    title: "OBR Virtual Simulation – State",
+    description: "Our team placed 3rd, which qualified us for the national stage.",
+  },
+  "obmep-2019": {
+    category: "Olympiad",
+    description: "Honorable mention at OBMEP, the Brazilian Mathematics Olympiad for Public Schools.",
+  },
+  "tjr-nacional-2019": { title: "TJR National", description: "Team Pequeno Gigante Android took 2nd place in Journey to the Center of the Earth." },
+  "obr-nacional-2019": {
+    title: "OBR National",
+    description: "No podium this time, but the team came home with another medal for taking part in the national stage.",
+  },
+  "obr-estadual-2019": { title: "OBR State", description: "The team became state champion and qualified for the national stage." },
+  "obr-regional-2019": { description: "Our team took 2nd place and qualified for the state stage." },
+  "tjr-regional-2019": {
+    description: "Team Pequeno Gigante Android took 1st place in Journey to the Center of the Earth and qualified for the national stage.",
+  },
+  "itr-2019": {
+    description: "Team Android took 1st place in Journey to the Center of the Earth, and team SkyDroid took 2nd in Tug of War.",
+  },
+  "tjr-nacional-2018": {
+    title: "TJR National",
+    description: "Team Android took 1st place in Journey to the Center of the Earth and qualified for the international stage.",
+  },
+  "tjr-regional-2018": {
+    description: "Team Android took 1st place in Journey to the Center of the Earth and qualified for the national stage.",
+  },
+  "mocao-2018": {
+    title: "Motion of applause — Piraí city council",
+    category: "Recognition",
+    description: "Motion of applause from the Piraí city council for our performance at the Brazilian Robotics Olympiad.",
+  },
+  "obr-estadual-2018": { title: "OBR State", description: "In our first year at OBR, we placed 5th in the state." },
+  "obr-regional-2018": {
+    description: "At my first competition, my team, Android, placed 7th and qualified for the state stage.",
+  },
+  "omerj-2017": {
+    category: "Olympiad",
+    description: "Honorable mention at OMERJ, the Rio de Janeiro State Mathematics Olympiad.",
+  },
+};
+
+export const achievementGroupsFor = (lang: Lang) =>
+  lang === "en" ? ACHIEVEMENT_GROUPS.map((g) => ({ ...g, label: ACHIEVEMENT_GROUPS_EN[g.id] })) : ACHIEVEMENT_GROUPS;
+
+export const achievementsFor = (lang: Lang): Achievement[] =>
+  localizeList(lang, achievements, "id", ACHIEVEMENTS_EN).map((a) => ({ ...a, date: localeDate(lang, a.date) }));

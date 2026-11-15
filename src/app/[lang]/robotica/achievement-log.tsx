@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { requestRevealScan } from "@/components/scroll-fx";
-import { ACHIEVEMENT_GROUPS, achievements, type AchievementGroup } from "@/content/achievements";
+import { achievementGroupsFor, achievementsFor, type AchievementGroup } from "@/content/achievements";
+import { tr } from "@/i18n";
+import { useLang } from "@/i18n/lang-context";
 
 type Filter = "todas" | AchievementGroup;
 
@@ -13,6 +15,8 @@ export function AchievementLog() {
   const [open, setOpen] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
 
+  const lang = useLang();
+  const achievements = achievementsFor(lang);
   const list = achievements.filter((a) => filter === "todas" || a.group === filter);
   const current = open === null ? null : list[open];
 
@@ -30,13 +34,13 @@ export function AchievementLog() {
   const step = (dir: number) => setOpen((i) => (i === null ? i : (i + dir + list.length) % list.length));
 
   const tabs: { id: Filter; label: string; count: number }[] = [
-    { id: "todas", label: "Todas", count: achievements.length },
-    ...ACHIEVEMENT_GROUPS.map((g) => ({ ...g, count: achievements.filter((a) => a.group === g.id).length })),
+    { id: "todas", label: tr(lang, "Todas", "All"), count: achievements.length },
+    ...achievementGroupsFor(lang).map((g) => ({ ...g, count: achievements.filter((a) => a.group === g.id).length })),
   ];
 
   return (
     <>
-      <div role="tablist" aria-label="Filtrar conquistas" className="mb-8 flex flex-wrap border-t border-l border-line font-mono text-[11px] uppercase">
+      <div role="tablist" aria-label={tr(lang, "Filtrar conquistas", "Filter achievements")} className="mb-8 flex flex-wrap border-t border-l border-line font-mono text-[11px] uppercase">
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -81,7 +85,7 @@ export function AchievementLog() {
                     sizes="(min-width: 1024px) 168px, 100vw"
                     className="object-cover grayscale-[35%] transition-[filter,transform] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
-                  <span className="absolute right-1 bottom-1 bg-ink/80 px-1 font-mono text-[9.5px] text-paper uppercase">ampliar</span>
+                  <span className="absolute right-1 bottom-1 bg-ink/80 px-1 font-mono text-[9.5px] text-paper uppercase">{tr(lang, "ampliar", "enlarge")}</span>
                 </span>
               </button>
             </li>
@@ -107,8 +111,8 @@ export function AchievementLog() {
               <span>
                 <span className="text-accent">{String(open! + 1).padStart(2, "0")}</span>/{String(list.length).padStart(2, "0")} · {current.category}
               </span>
-              <button type="button" onClick={() => setOpen(null)} className="cursor-pointer hover:text-accent" aria-label="Fechar">
-                Fechar ✕
+              <button type="button" onClick={() => setOpen(null)} className="cursor-pointer hover:text-accent" aria-label={tr(lang, "Fechar", "Close")}>
+                {tr(lang, "Fechar", "Close")} ✕
               </button>
             </div>
             <div className="relative h-[min(60vh,560px)] bg-paper">
@@ -121,15 +125,15 @@ export function AchievementLog() {
                 {current.description && <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-ink-2">{current.description}</p>}
                 {current.link && (
                   <a href={current.link} target="_blank" rel="noreferrer" className="link-u mt-3 inline-block text-[12px]">
-                    ver registro original ↗
+                    {tr(lang, "ver registro original", "see the original record")} ↗
                   </a>
                 )}
               </div>
               <div className="flex items-end gap-2">
-                <button type="button" onClick={() => step(-1)} className="cursor-pointer border border-line px-3 py-2 font-mono text-[12px] hover:border-accent hover:text-accent" aria-label="Anterior">
+                <button type="button" onClick={() => step(-1)} className="cursor-pointer border border-line px-3 py-2 font-mono text-[12px] hover:border-accent hover:text-accent" aria-label={tr(lang, "Anterior", "Previous")}>
                   ←
                 </button>
-                <button type="button" onClick={() => step(1)} className="cursor-pointer border border-line px-3 py-2 font-mono text-[12px] hover:border-accent hover:text-accent" aria-label="Próxima">
+                <button type="button" onClick={() => step(1)} className="cursor-pointer border border-line px-3 py-2 font-mono text-[12px] hover:border-accent hover:text-accent" aria-label={tr(lang, "Próxima", "Next")}>
                   →
                 </button>
               </div>
