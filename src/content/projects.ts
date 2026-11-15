@@ -86,10 +86,10 @@ export const projects: Project[] = [
     summary: "Rastreamento em tempo real de dispositivos em campo, em três serviços.",
     year: "2026",
     org: "Next Devices",
-    role: "Full Stack — arquitetura, APIs, tempo real e deploy",
+    role: "Full Stack: arquitetura, APIs, tempo real e deploy",
     about: [
-      "Aplicações web de rastreamento integradas a dispositivos IoT. Trabalhei de ponta a ponta: das decisões de arquitetura e da documentação técnica (PRDs, TDDs, fluxos de dados) ao deploy em produção na AWS.",
-      "O sistema foi dividido em três serviços — aplicação web, API principal e um microserviço de processamento geoespacial — para isolar o processamento pesado da API.",
+      "Aplicações web de rastreamento integradas a dispositivos IoT, com o mapa em Mapbox mostrando os dispositivos em campo. A documentação técnica (PRDs, TDDs e fluxos de dados) e o deploy na AWS também ficaram comigo.",
+      "O sistema foi dividido em três serviços (aplicação web, API principal e um microserviço de processamento geoespacial) para isolar o processamento pesado da API.",
     ],
     highlights: [
       "Ingestão de telemetria via HTTP e sockets TCP, com transmissão ao cliente por WebSocket e Server-Sent Events.",
@@ -108,9 +108,9 @@ export const projects: Project[] = [
     areas: ["empresa"],
     featured: true,
     summary: "Tracking de dados de campanhas digitais e integração com a Taboola.",
-    year: "2025 – 2026",
+    year: "2025 → 2026",
     org: "Oracclum",
-    role: "Full Stack — estágio",
+    role: "Estágio Full Stack",
     about: [
       "Plataforma de tracking de dados para campanhas digitais, sobre um back-end de grande porte em Clean Architecture que exigia percorrer todas as camadas.",
     ],
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     summary: "Manutenção evolutiva e automações para sistemas internos em produção.",
     year: "2024",
     org: "INATEL",
-    role: "Full Stack — estágio",
+    role: "Estágio Full Stack",
     highlights: [
       "Interfaces em Vue.js sobre plataforma low-code corporativa, adaptadas às limitações da ferramenta.",
       "Back-end em Python (Flask e Django) com rotinas de automação que substituíram processos manuais.",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
     org: "Nine Tails #9219",
     role: "Design e desenvolvimento",
     about: [
-      "Site oficial da equipe de FIRST Robotics Competition da Firjan SENAI SESI Resende, onde comecei na FRC. Conta seis robôs, cinco troféus e 122 partidas com foto real, e foi pensado para ser explorado: cada página tem uma interação própria.",
+      "Site oficial da equipe de FIRST Robotics Competition da Firjan SENAI SESI Resende, onde comecei na FRC. Conta seis robôs, cinco troféus e 122 partidas com foto real.",
       "Os robôs foram recortados das fotos e atravessam a quadra conforme a rolagem; o primeiro deles tem um modelo 3D que repete a jogada da temporada Charged Up.",
     ],
     highlights: [
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Produto, design e desenvolvimento",
     about: [
-      "Um caminho simples para quem está chegando, voltando ou só quer entender o que a Igreja Católica crê, celebra e vive. Fiz do zero, do design ao deploy.",
+      "Um caminho simples para quem está chegando, voltando ou só quer entender o que a Igreja Católica crê, celebra e vive. Fiz do zero: design, código e deploy.",
       "É uma SPA estática que se comporta como app: instala como PWA, salva o progresso no navegador e gera no build uma página com título e descrição próprios para cada rota, para que os links tenham prévia nas redes.",
     ],
     highlights: [
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     org: "Nine Tails #9219",
     role: "Interface do jogo: menu, loja e customização",
     about: [
-      "Jogo criado pela Nine Tails #9219 durante a preparação para a temporada Charged Up da FRC, como forma de engajar a equipe com o tema do ano. Foi feito em Unity, em C#, para Android, por três pessoas da equipe.",
+      "Jogo criado pela Nine Tails #9219 durante a preparação para a temporada Charged Up da FRC, para a equipe estudar o tema do ano. Foi feito em Unity, em C#, para Android, por três pessoas da equipe.",
       "Minha parte foi a interface: a tela de menu, a junção das cenas, a rotação do personagem e a loja de customização, com a vitrine de camisas e a rolagem dinâmica dos itens.",
     ],
     stack: ["Unity", "C#", "Android"],

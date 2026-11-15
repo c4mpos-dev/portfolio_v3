@@ -34,10 +34,10 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
   "rastreamento-iot": {
     name: "IoT tracking platform",
     summary: "Real-time tracking of devices in the field, across three services.",
-    role: "Full stack — architecture, APIs, real time and deployment",
+    role: "Full stack: architecture, APIs, real time and deployment",
     about: [
-      "Web tracking applications integrated with IoT devices. I worked end to end: from architecture decisions and technical documentation (PRDs, TDDs, data flows) to production deployment on AWS.",
-      "The system was split into three services — web application, main API and a geospatial processing microservice — to keep heavy processing away from the API.",
+      "Web tracking applications integrated with IoT devices, with a Mapbox map showing the devices in the field. The technical documentation (PRDs, TDDs and data flows) and the AWS deployment were mine too.",
+      "The system was split into three services (web application, main API and a geospatial processing microservice) to keep heavy processing away from the API.",
     ],
     highlights: [
       "Telemetry ingestion over HTTP and TCP sockets, streamed to the client over WebSocket and Server-Sent Events.",
@@ -49,7 +49,7 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
   "tracking-campanhas": {
     name: "Campaign tracking platform",
     summary: "Data tracking for digital campaigns and a Taboola integration.",
-    role: "Full stack — internship",
+    role: "Full stack internship",
     about: ["A data tracking platform for digital campaigns, on a large Clean Architecture back end that required working through every layer."],
     highlights: [
       "Cookie-based authentication in Next.js (client side, server side and Server Actions), with routes protected by profile.",
@@ -61,7 +61,7 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
   "sistemas-inatel": {
     name: "INATEL internal systems",
     summary: "Ongoing development and automation for internal systems in production.",
-    role: "Full stack — internship",
+    role: "Full stack internship",
     highlights: [
       "Vue.js interfaces on a corporate low-code platform, adapted to the tool's limits.",
       "Python back end (Flask and Django) with automation routines that replaced manual processes.",
@@ -94,7 +94,7 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
     summary: "The FRC team's official site, with 3D, scroll-driven animation and the team's full history.",
     role: "Design and development",
     about: [
-      "The official site of the FIRST Robotics Competition team at Firjan SENAI SESI Resende, where I started in FRC. It tells the story of six robots, five trophies and 122 matches with real photos, and it's built to be explored: every page has its own interaction.",
+      "The official site of the FIRST Robotics Competition team at Firjan SENAI SESI Resende, where I started in FRC. It tells the story of six robots, five trophies and 122 matches with real photos.",
       "The robots were cut out of photos and cross the field as you scroll; the first one has a 3D model that replays its Charged Up move.",
     ],
     highlights: [
@@ -108,7 +108,7 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
     summary: "An introduction to the Catholic faith: paths by profile, daily liturgy and a guided tour of a 3D church.",
     role: "Product, design and development",
     about: [
-      "A simple path for anyone arriving, returning or just wanting to understand what the Catholic Church believes, celebrates and lives. I built it from scratch, from design to deployment.",
+      "A simple path for anyone arriving, returning or just wanting to understand what the Catholic Church believes, celebrates and lives. I built it from scratch: design, code and deployment.",
       "It's a static SPA that behaves like an app: it installs as a PWA, keeps progress in the browser and generates, at build time, a page with its own title and description for each route so links get previews on social media.",
     ],
     highlights: [
@@ -166,7 +166,7 @@ const PROJECTS_EN: Record<string, ProjectEn> = {
     summary: "An Android game built in Unity by Nine Tails while preparing for the 2023 season.",
     role: "Game interface: menu, shop and customization",
     about: [
-      "A game Nine Tails #9219 made while preparing for the FRC Charged Up season, as a way to get the team engaged with the year's theme. Built in Unity, in C#, for Android, by three people from the team.",
+      "A game Nine Tails #9219 made while preparing for the FRC Charged Up season, to get the team into the year's theme. Built in Unity, in C#, for Android, by three people from the team.",
       "My part was the interface: the menu screen, joining the scenes, character rotation and the customization shop, with the jersey showcase and dynamic item scrolling.",
     ],
     captions: ["Game screen"],

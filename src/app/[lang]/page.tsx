@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
   return pageMetadata(lang, "/", {
     description: tr(
       lang,
-      "Desenvolvedor Full Stack em Resende, RJ: TypeScript nas duas pontas, de NestJS e Node.js a React e Next.js. Sistemas distribuídos, IoT, projetos e oito anos de robótica competitiva.",
-      "Full Stack Developer in Resende, Brazil: TypeScript on both ends, from NestJS and Node.js to React and Next.js. Distributed systems, IoT, projects and eight years of competitive robotics.",
+      "Desenvolvedor Full Stack em Resende, RJ: TypeScript nas duas pontas, de NestJS e Node.js a React e Next.js. Sistemas distribuídos, IoT, projetos e robótica competitiva desde 2018.",
+      "Full Stack Developer in Resende, Brazil: TypeScript on both ends, from NestJS and Node.js to React and Next.js. Distributed systems, IoT, projects and competitive robotics since 2018.",
     ),
   });
 }
@@ -65,17 +65,20 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         />
 
         <div className="mt-10 grid items-start gap-10 desk:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-          <Reveal>
+          <div>
             <p className="text-[18px] leading-relaxed text-ink-2">
               {tr(
                 lang,
-                "Desenvolvedor Full Stack, da definição de requisitos ao deploy e à manutenção em produção na AWS. Experiência com sistemas distribuídos, microserviços, dispositivos IoT e evolução de bases legadas em Clean Architecture.",
-                "Full Stack Developer, from defining requirements to deploying and maintaining production on AWS. Experienced with distributed systems, microservices, IoT devices and evolving legacy codebases with Clean Architecture.",
+                "Desenvolvedor Full Stack. Defino requisitos, escrevo a API e a interface e mantenho o sistema em produção na AWS. Experiência com sistemas distribuídos, microserviços, dispositivos IoT e evolução de bases legadas em Clean Architecture.",
+                "Full Stack Developer. I define requirements, write the API and the interface, and keep the system running in production on AWS. Experienced with distributed systems, microservices, IoT devices and evolving legacy codebases with Clean Architecture.",
               )}
             </p>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
               <a href="#experiencia" className="link-u">
                 {tr(lang, "ver experiência ↓", "see experience ↓")}
+              </a>
+              <a href="/cv_CauaCampos.pdf" download="cv_CauaCampos.pdf" className="link-u">
+                {tr(lang, "baixar currículo ↓", "download CV ↓")}
               </a>
               <a href={`mailto:${social.email}`} className="link-u text-muted">
                 email ↗
@@ -87,9 +90,9 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 linkedin ↗
               </a>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal>
+          <div>
             <div className="crop border border-line bg-sheet font-mono text-[12.5px]">
               <div className="border-b border-line px-4 py-2 label text-[10px]">{tr(lang, "Ficha técnica", "Spec sheet")}</div>
               <dl>
@@ -109,7 +112,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 ))}
               </dl>
             </div>
-          </Reveal>
+          </div>
         </div>
       </header>
 
@@ -119,13 +122,13 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         index={1}
         label={tr(lang, "Experiência", "Experience")}
         title={tr(lang, "Do requisito ao deploy.", "From requirements to deploy.")}
-        dimension={tr(lang, "Abr 2024 → Set 2026 · 3 empresas", "Apr 2024 → Sep 2026 · 3 companies")}
+        dimension={tr(lang, "3 empresas · INATEL, Oracclum, Next Devices", "3 companies · INATEL, Oracclum, Next Devices")}
         lang={lang}
       >
         <div className="grid grid-cols-1 gap-[clamp(56px,9vh,96px)]">
           {experience.map((j, ji) => (
             <article key={j.id}>
-              <Reveal className="grid gap-6 border-t-2 border-ink pt-5 desk:grid-cols-[minmax(0,1fr)_260px]">
+              <div className="grid gap-6 border-t-2 border-ink pt-5 desk:grid-cols-[minmax(0,1fr)_260px]">
                 <div>
                   <div className="font-mono text-[11px] text-accent">EXP-{String(ji + 1).padStart(2, "0")}</div>
                   <h3 className="display mt-1 text-[clamp(1.8rem,3.6vw,2.6rem)] leading-tight">{j.company}</h3>
@@ -145,11 +148,11 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                     </div>
                   ))}
                 </dl>
-              </Reveal>
+              </div>
 
               <ol className="mt-8 grid gap-0 border-t border-line">
                 {j.bullets.map((b, bi) => (
-                  <li key={bi} data-r="" className="reveal grid grid-cols-[44px_1fr] gap-3 border-b border-line py-4">
+                  <li key={bi} className="grid grid-cols-[44px_1fr] gap-3 border-b border-line py-4">
                     <span className="font-mono text-[11.5px] text-accent">
                       {ji + 1}.{bi + 1}
                     </span>
@@ -164,10 +167,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 </div>
               )}
 
-              <Reveal className="mt-6 grid gap-3 desk:grid-cols-[88px_1fr]">
+              <div className="mt-6 grid gap-3 desk:grid-cols-[88px_1fr]">
                 <div className="label pt-1 text-[10px]">Stack</div>
                 <Chips items={j.stack} />
-              </Reveal>
+              </div>
             </article>
           ))}
         </div>
@@ -215,7 +218,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       >
         <div className="grid items-start gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           <StackExploded lang={lang} />
-          <Reveal>
+          <div>
             <dl className="border-t-2 border-ink">
               {skills.map((g) => (
                 <div key={g.label} className="grid gap-1.5 border-b border-line py-4">
@@ -224,21 +227,21 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 </div>
               ))}
             </dl>
-          </Reveal>
+          </div>
         </div>
       </Section>
 
       {/* Folha 05 — Formação */}
-      <Section id="formacao" index={5} label={tr(lang, "Formação", "Education")} title={tr(lang, "Engenharia, de base.", "Engineering, from the ground up.")} lang={lang}>
+      <Section id="formacao" index={5} label={tr(lang, "Formação", "Education")} title={tr(lang, "Engenharia, de base.", "Engineering, from the basics.")} lang={lang}>
         <ol className="border-t-2 border-ink">
           {education.map((e) => (
-            <li key={e.school + e.period} data-r="" className="reveal grid gap-2 border-b border-line py-5 desk:grid-cols-[160px_1fr_auto]">
+            <li key={e.school + e.period} className="grid gap-2 border-b border-line py-5 desk:grid-cols-[160px_1fr_auto]">
               <span className="font-mono text-[12px] text-ink-2">{e.period}</span>
               <div>
                 <div className="text-[17px] font-semibold">{e.course}</div>
                 <div className="mt-0.5 text-[14px] text-muted">
                   {e.school}
-                  {e.fullName && <span className="text-faint"> — {e.fullName}</span>}
+                  {e.fullName && <span className="text-faint"> · {e.fullName}</span>}
                 </div>
               </div>
               <span className="font-mono text-[11px] text-faint desk:text-right">{e.note}</span>
@@ -251,27 +254,27 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Section id="sobre" index={6} label={tr(lang, "Sobre", "About")} title={tr(lang, "Sou o Cauã.", "I'm Cauã.")} lang={lang}>
         <div className="grid items-start gap-10 desk:grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)]">
           <PhotoReel photos={travelPhotosFor(lang)} fig="03" />
-          <Reveal className="grid gap-5 text-[16px] leading-relaxed text-ink-2">
+          <div className="grid gap-5 text-[16px] leading-relaxed text-ink-2">
             <p>
               {tr(
                 lang,
-                "Sou desenvolvedor Full Stack em Resende, RJ, e estudo Engenharia de Software na AEDB. Gosto de sistemas que precisam funcionar de verdade — com dispositivo em campo, dado chegando em tempo real e usuário do outro lado.",
-                "I'm a Full Stack Developer in Resende, Brazil, studying Software Engineering at AEDB. I like systems that have to work for real — with a device in the field, data arriving in real time and a user on the other end.",
+                "Sou desenvolvedor Full Stack em Resende, RJ, e estudo Engenharia de Software na AEDB. Gosto de sistemas que precisam funcionar de verdade, com dispositivo em campo, dado chegando em tempo real e usuário do outro lado.",
+                "I'm a Full Stack Developer in Resende, Brazil, studying Software Engineering at AEDB. I like systems that have to work for real, with a device in the field, data arriving in real time and a user on the other end.",
               )}
             </p>
             <p className="text-muted">
               {tr(
                 lang,
-                "Antes do código profissional veio a robótica competitiva: três equipes, dois mundiais em 2023 e os algoritmos de navegação autônoma dos robôs. É de lá que vem a forma como trabalho — prazo curto, restrição real, entrega funcionando.",
-                "Before professional code came competitive robotics: three teams, two world events in 2023 and the robots' autonomous navigation algorithms. That's where the way I work comes from — tight deadlines, real constraints, working deliveries.",
+                "Antes do código profissional veio a robótica competitiva: três equipes, dois mundiais em 2023 e os algoritmos de navegação autônoma dos robôs.",
+                "Before professional code came competitive robotics: three teams, two world events in 2023 and the robots' autonomous navigation algorithms.",
               )}
             </p>
-          </Reveal>
+          </div>
         </div>
 
         <ol className="mt-12 border-t-2 border-ink">
           {story.map((s) => (
-            <li key={s.title} data-r="" className="reveal grid gap-2 border-b border-line py-5 desk:grid-cols-[200px_1fr]">
+            <li key={s.title} className="grid gap-2 border-b border-line py-5 desk:grid-cols-[200px_1fr]">
               <div className="font-mono text-[11.5px] text-faint">{s.meta}</div>
               <div>
                 <h3 className="text-[18px] font-semibold">{s.title}</h3>
@@ -293,12 +296,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         index={7}
         label={tr(lang, "Contato", "Contact")}
         title={tr(lang, "Vamos conversar.", "Let's talk.")}
-        lead={tr(lang, "Para projetos, conversas ou só trocar uma ideia. Respondo em até 24 horas.", "For projects, a chat or just to swap ideas. I reply within 24 hours.")}
+        lead={tr(lang, "Respondo email e WhatsApp em até um dia.", "I answer email and WhatsApp within a day.")}
         lang={lang}
       >
         <ul className="crop border border-line bg-sheet">
           {channels.map((c) => (
-            <li key={c.label} data-r="" className="reveal border-b border-line-soft last:border-b-0">
+            <li key={c.label} className="border-b border-line-soft last:border-b-0">
               <a
                 href={c.href}
                 target="_blank"
@@ -311,6 +314,17 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/cv_CauaCampos.pdf"
+              download="cv_CauaCampos.pdf"
+              className="group grid grid-cols-[100px_1fr_auto] items-center gap-4 px-4 py-4 transition-colors hover:bg-paper"
+            >
+              <span className="font-mono text-[10.5px] tracking-[0.1em] text-faint uppercase">{tr(lang, "Currículo", "CV")}</span>
+              <span className="truncate font-mono text-[14px]">{tr(lang, "Baixar em PDF", "Download PDF")}</span>
+              <span className="font-mono text-muted transition-transform group-hover:translate-y-0.5 group-hover:text-accent">↓</span>
+            </a>
+          </li>
         </ul>
       </Section>
 

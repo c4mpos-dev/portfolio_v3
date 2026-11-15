@@ -11,8 +11,8 @@ export type StoryChapter = {
 export const story: StoryChapter[] = [
   {
     title: "Onde começou.",
-    body: "Aprendi os fundamentos de programação e de trabalho em equipe na robótica competitiva, a partir do 7º ano. Foram três equipes até 2023 — a trajetória completa tem uma página só dela.",
-    meta: "2018–2023 · Piraí e Resende, RJ",
+    body: "Aprendi os fundamentos de programação e de trabalho em equipe na robótica competitiva, a partir do 7º ano. Foram três equipes até 2023, e a trajetória completa tem uma página só dela.",
+    meta: "2018 → 2023 · Piraí e Resende, RJ",
     link: { href: "/robotica", label: "Ver robótica →" },
   },
   {
@@ -22,7 +22,7 @@ export const story: StoryChapter[] = [
   },
   {
     title: "Next Devices.",
-    body: "Primeiro emprego efetivo: aplicações web de rastreamento integradas a dispositivos IoT, de ponta a ponta — arquitetura, documentação, APIs, tempo real e deploy na AWS.",
+    body: "Primeiro emprego efetivo: aplicações web de rastreamento integradas a dispositivos IoT, cobrindo arquitetura, documentação, APIs, tempo real e deploy na AWS.",
     meta: "Jan → Set 2026 · Santa Rita do Sapucaí, MG",
   },
 ];
@@ -53,8 +53,8 @@ export const channels = [
 const STORY_EN: Partial<StoryChapter>[] = [
   {
     title: "Where it started.",
-    body: "I learned the basics of programming and teamwork in competitive robotics, starting in 7th grade. Three teams through 2023 — the whole story has a page of its own.",
-    meta: "2018–2023 · Piraí and Resende, RJ",
+    body: "I learned the basics of programming and teamwork in competitive robotics, starting in 7th grade. Three teams through 2023, and the whole story has a page of its own.",
+    meta: "2018 → 2023 · Piraí and Resende, RJ",
     link: { href: "/robotica", label: "See robotics →" },
   },
   {
@@ -64,7 +64,7 @@ const STORY_EN: Partial<StoryChapter>[] = [
   },
   {
     title: "Next Devices.",
-    body: "My first full-time job: web tracking applications integrated with IoT devices, end to end — architecture, documentation, APIs, real time and deployment on AWS.",
+    body: "My first full-time job: web tracking applications integrated with IoT devices, covering architecture, documentation, APIs, real time and deployment on AWS.",
     meta: "Jan → Sep 2026 · Santa Rita do Sapucaí, MG",
   },
 ];

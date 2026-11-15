@@ -75,11 +75,11 @@ function TeamChart({ lang }: { lang: Lang }) {
         ))}
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. 01</span> —{" "}
+        <span className="text-accent">FIG. 01</span> ·{" "}
         {tr(
           lang,
-          "As três equipes na mesma escala de tempo. Em 2021 e em 2022–2023 competi por duas ao mesmo tempo.",
-          "The three teams on one timeline. In 2021 and in 2022–2023 I competed for two at once.",
+          "As três equipes na mesma escala de tempo. Em 2021 e entre 2022 e 2023 competi por duas ao mesmo tempo.",
+          "The three teams on one timeline. In 2021 and from 2022 to 2023 I competed for two at once.",
         )}
       </figcaption>
     </figure>
@@ -108,15 +108,15 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
         </Reveal>
         <Dimension className="mt-8" start={`${FIRST} · Piraí, RJ`} end={`${LAST} · Resende, RJ`} label={`${YEARS.length} ${tr(lang, "anos", "years")}`} />
 
-        <Reveal className="mt-10">
+        <div className="mt-10">
           <p className="max-w-[60ch] text-[18px] leading-relaxed text-ink-2">
             {tr(
               lang,
-              `Da primeira equipe, na prefeitura de Piraí, ao nível mais alto da robótica, na FRC. Cada time foi uma fase — e ${total} das competições da linha do tempo saíram deles.`,
-              `From my first team, run by the Piraí city council, to the top level of robotics, in FRC. Each team was a stage — and ${total} of the competitions in the timeline came from them.`,
+              `Da primeira equipe, na prefeitura de Piraí, até a FRC, a liga de robôs de grande porte. Desses três times saíram ${total} das competições da linha do tempo.`,
+              `From my first team, run by the Piraí city council, to FRC, the league for large robots. These three teams account for ${total} of the competitions in the timeline.`,
             )}
           </p>
-        </Reveal>
+        </div>
 
         <div className="mt-12">
           <TeamChart lang={lang} />
@@ -137,7 +137,7 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
               {/* The team sheet stays in view while its records scroll past */}
               <div className="grid gap-6 desk:sticky desk:top-24">
                 <Figure src={t.image} alt={t.name} fig={pad(i + 2)} caption={t.name} lang={lang} className="aspect-[4/3]" />
-                <Reveal>
+                <div>
                   <p className="text-[16px] leading-relaxed text-ink-2">{t.desc}</p>
                   <dl className="mt-5 border border-line bg-sheet font-mono text-[11.5px]">
                     {spec.map(([k, v]) => (
@@ -147,11 +147,11 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
                       </div>
                     ))}
                   </dl>
-                </Reveal>
+                </div>
               </div>
 
               <div>
-                <Reveal>
+                <div>
                   <div className="label text-[10px]">{tr(lang, "Prêmios em destaque", "Featured awards")}</div>
                   <ul className="mt-2 border-t-2 border-ink">
                     {t.awards.map((a) => (
@@ -161,14 +161,14 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
                       </li>
                     ))}
                   </ul>
-                </Reveal>
+                </div>
 
                 <div className="label mt-10 text-[10px]">
                   {tr(lang, "Registros da equipe", "Team records")} · {pad(t.records.length)}
                 </div>
                 <ol className="mt-2 border-t border-line">
                   {t.records.map((r) => (
-                    <li key={r.id} data-r="" className="reveal grid grid-cols-[84px_1fr] gap-x-4 border-b border-line-soft py-3.5">
+                    <li key={r.id} className="grid grid-cols-[84px_1fr] gap-x-4 border-b border-line-soft py-3.5">
                       <span className="pt-0.5 font-mono text-[11.5px] text-ink-2">{r.date}</span>
                       <span>
                         <span className="block text-[15px] leading-tight font-semibold">
@@ -186,7 +186,7 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
         );
       })}
 
-      <Reveal className="mt-[clamp(72px,12vh,120px)]">
+      <div className="mt-[clamp(72px,12vh,120px)]">
         <Link href={localePath(lang, "/robotica#linha-do-tempo")} className="group flex items-center justify-between gap-4 border border-line bg-sheet px-5 py-4 transition-colors hover:bg-paper">
           <span>
             <span className="label block text-[10px]">{tr(lang, "Continua em", "Continues in")}</span>
@@ -198,7 +198,7 @@ export default async function EquipesPage({ params }: PageProps<"/[lang]/robotic
             →
           </span>
         </Link>
-      </Reveal>
+      </div>
 
       <Footer lang={lang} />
     </main>

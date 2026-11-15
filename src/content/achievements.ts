@@ -41,7 +41,7 @@ export const achievements: Achievement[] = [
     month: 5,
     place: "Santa Rita do Sapucaí, MG",
     description:
-      "A INTLOG conquistou o 1º lugar no Hackathon Construtech 2024, desenvolvendo uma solução inovadora para o setor de construção civil.",
+      "A INTLOG ficou em 1º lugar no Hackathon ConstruTech 2024, voltado ao setor de construção civil.",
     image: "/images/conquistas/hackathon-construtech-2024.jpg",
     link: "https://inatel.br/noticias/hackathon-premia-melhores-solucoes-para-mercado-da-construcao-civil",
   },
@@ -113,7 +113,7 @@ export const achievements: Achievement[] = [
     place: "Brasília, DF",
     team: "Nine Tails",
     description:
-      "Conquistamos o prêmio 'Rookie All-Star' da competição. Conquistando o direito de participar do mundial em Houston.",
+      "Conquistamos o prêmio 'Rookie All-Star' da competição, que nos deu a vaga no mundial em Houston.",
     image: "/images/conquistas/frc-brasilia.jpg",
     link: "https://www.instagram.com/p/Cp_YwuGOO4c/",
   },
@@ -128,7 +128,7 @@ export const achievements: Achievement[] = [
     place: "Duque de Caxias, RJ",
     team: "Smart Lego",
     description:
-      "3º lugar geral no torneio nacional de robótica FLL Superpowered, o famoso Champions's Award.",
+      "3º lugar geral no torneio nacional de robótica FLL Superpowered, o Champion's Award.",
     image: "/images/conquistas/fll-superpowered.jpg",
     link: "https://www.instagram.com/p/Co2PMGCOoTp/?img_index=2",
   },
@@ -171,7 +171,7 @@ export const achievements: Achievement[] = [
     place: "Virtual",
     team: "Smart Lego",
     description:
-      "2º Lugar na categoria Projeto de Inovação na estapa estadual.",
+      "2º lugar na categoria Projeto de Inovação na etapa estadual.",
     image: "/images/conquistas/fll-cargoconnect.png",
     link: "https://www.instagram.com/p/CcJaI-TO7CQ/?img_index=1",
   },
@@ -200,7 +200,7 @@ export const achievements: Achievement[] = [
     place: "Virtual",
     team: "Smart Lego",
     description:
-      "Nossa equipe apresentou um projeto social sólido baseado no tema da temporada.",
+      "Nossa equipe apresentou um projeto social baseado no tema da temporada.",
     image: "/images/conquistas/tbr-nacional-2021.png",
     link: "https://www.instagram.com/p/CXHW5YSpxz-/",
   },
@@ -232,7 +232,7 @@ export const achievements: Achievement[] = [
   },
   {
     id: "obrvs-nacional-2021",
-    title: "OBR Virtual Simulação - Nacional",
+    title: "OBR Virtual Simulação (Nacional)",
     category: "OBR Virtual",
     group: "robotica",
     date: "Out 2021",
@@ -254,13 +254,13 @@ export const achievements: Achievement[] = [
     place: "Virtual",
     team: "Smart Lego",
     description:
-      "A equipe apresentou um projeto bem sólido sobre o tema e conseguiu a classificação para a etapa nacional.",
+      "A equipe apresentou um projeto sobre o tema e conseguiu a classificação para a etapa nacional.",
     image: "/images/conquistas/tbr-regional-2021.png",
     link: "https://www.instagram.com/p/CUTXGXisRy_/?img_index=1",
   },
   {
     id: "obrvs-estadual-2021",
-    title: "OBR Virtual Simulação - Estadual",
+    title: "OBR Virtual Simulação (Estadual)",
     category: "OBR Virtual",
     group: "robotica",
     date: "Ago 2021",
@@ -275,7 +275,7 @@ export const achievements: Achievement[] = [
   },
   {
     id: "obrvs-nacional-2020",
-    title: "OBR Virtual Simulação - Nacional",
+    title: "OBR Virtual Simulação (Nacional)",
     category: "OBR Virtual",
     group: "robotica",
     date: "Nov 2020",
@@ -284,13 +284,13 @@ export const achievements: Achievement[] = [
     place: "Virtual",
     team: "Pequeno Gigante Skydroid",
     description:
-      "Nossa equipe lidou com diversos desafios e ficou com 27º Lugar do Brasil, saindo na capa da OBR.",
+      "Nossa equipe ficou em 27º lugar no Brasil e saiu na capa da OBR.",
     image: "/images/conquistas/obrvs-nacional-2020.png",
     link: "https://www.facebook.com/photo?fbid=1621196931386299&set=a.236337473205592&locale=pt_BR",
   },
   {
     id: "obrvs-estadual-2020",
-    title: "OBR Virtual Simulação - Estadual",
+    title: "OBR Virtual Simulação (Estadual)",
     category: "OBR Virtual",
     group: "robotica",
     date: "Out 2020",
@@ -342,7 +342,7 @@ export const achievements: Achievement[] = [
     place: "Rio Grande, RS",
     team: "Pequeno Gigante Skydroid",
     description:
-      "A equipe não conseguiu o pódio, mas volta com mais uma medalha como participação na etapa nacional",
+      "A equipe não conseguiu o pódio, mas volta com mais uma medalha como participação na etapa nacional.",
     image: "/images/conquistas/obr-nacional-2019.jpg",
     link: "https://www.facebook.com/PiraiPequenoGigante/posts/pfbid036idZdURcDMarMr5EYKhWv29QojMxbw99iDe52kRpQyptkhB93T4sn2mexjhjauhLl?locale=pt_BR",
   },
@@ -357,7 +357,7 @@ export const achievements: Achievement[] = [
     place: "Petrópolis, RJ",
     team: "Pequeno Gigante Skydroid",
     description:
-      "A equipe se consagrou campeã estadual, classificando-se para a etapa nacional.",
+      "A equipe foi campeã estadual e se classificou para a etapa nacional.",
     image: "/images/conquistas/obr-estadual-2019.jpg",
     link: "https://www.facebook.com/PiraiPequenoGigante/posts/pfbid02PeydRhAYLARs2F94ytMazgFDS9oxR3MvDAdVjZ5DPaMrgwezJK9YjATugYDjA3Eml?locale=pt_BR",
   },
@@ -372,7 +372,7 @@ export const achievements: Achievement[] = [
     place: "São Gonçalo, RJ",
     team: "Pequeno Gigante Skydroid",
     description:
-      "Nossa equipe ficou com o 2º Lugar, se classificando para a etapa estadual.",
+      "Nossa equipe ficou com o 2º lugar, se classificando para a etapa estadual.",
     image: "/images/conquistas/obr-regional-2019.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid0sxWqqDV85zDGw8NbqaecNWZEHnu2KivNZWtpWjvKUPCQEEvPatR2LzMJbmevhaWHl?locale=pt_BR",
   },
@@ -387,7 +387,7 @@ export const achievements: Achievement[] = [
     place: "Volta Redonda, RJ",
     team: "Pequeno Gigante Android",
     description:
-      "A equipe Pequeno Gigante Android conquistou 1º Lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa nacional.",
+      "A equipe Pequeno Gigante Android conquistou 1º lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa nacional.",
     image: "/images/conquistas/tjr-regional-2019.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid02VRAEoreu991RgLVLH8U6xxdsWJsrHzU9DvUXmg8ZM24t96QFRdtL89ECSfGkr8v3l",
   },
@@ -402,7 +402,7 @@ export const achievements: Achievement[] = [
     place: "São Luís, MA",
     team: "Pequeno Gigante Android/SkyDroid",
     description:
-      "A equipe Android conquistou 1º Lugar na categoria Viagem ao Centro da Terra, e a equipe SkyDroid conquistou 2º Lugar na categoria Cabo de Guerra.",
+      "A equipe Android conquistou 1º lugar na categoria Viagem ao Centro da Terra, e a equipe SkyDroid conquistou 2º lugar na categoria Cabo de Guerra.",
     image: "/images/conquistas/itr-2019.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid02fu2KVuWUSvodAsMnhJTcyX49WP9ENEqMyY6FiuPP8cbJkuaiEckJA6CTSXXKvaSwl",
   },
@@ -411,13 +411,13 @@ export const achievements: Achievement[] = [
     title: "TJR Nacional",
     category: "TJR",
     group: "robotica",
-    date: "Nov–Dez 2018",
+    date: "Nov → Dez 2018",
     year: 2018,
     month: 11,
     place: "João Pessoa, PB",
     team: "Android",
     description:
-      "A equipe Android conquistou 1º Lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa internacional.",
+      "A equipe Android conquistou 1º lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa internacional.",
     image: "/images/conquistas/tjr-nacional-2018.jpg",
     link: "https://www.facebook.com/photo/?fbid=10205077555133985&set=pb.1696644253.-2207520000",
   },
@@ -432,13 +432,13 @@ export const achievements: Achievement[] = [
     place: "Botafogo, RJ",
     team: "Android",
     description:
-      "A equipe Android conquistou 1º Lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa nacional.",
+      "A equipe Android conquistou 1º lugar na categoria Viagem ao Centro da Terra, se classificando para a etapa nacional.",
     image: "/images/conquistas/tjr-regional-2018.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid02AYDgougVJvUiCRmjfWEBtzfEciYgPKQ2B9HUa4CzuCGMFpKG52QSWycvQvV9omBQl",
   },
   {
     id: "mocao-2018",
-    title: "Moção de aplausos — Prefeitura de Piraí",
+    title: "Moção de aplausos da Prefeitura de Piraí",
     category: "Reconhecimento",
     group: "outros",
     date: "Set 2018",
@@ -460,7 +460,7 @@ export const achievements: Achievement[] = [
     place: "Volta Redonda, RJ",
     team: "Android",
     description:
-      "Em nosso primeiro ano na OBR, conquistamos 5º Lugar estadual.",
+      "Em nosso primeiro ano na OBR, conquistamos 5º lugar estadual.",
     image: "/images/conquistas/obr-estadual-2018.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid04CwuLo3gUMMyYGpFx5Bjm5b2NbBjLYMAR8YMeGgMmxYq5aaVa174tTgAC8mTdCu4l?locale=pt_BR",
   },
@@ -475,7 +475,7 @@ export const achievements: Achievement[] = [
     place: "Volta Redonda, RJ",
     team: "Android",
     description:
-      "Em minha primeira competição, minha equipe, Android, conquistou 7º Lugar, se classificando para a etapa estadual.",
+      "Em minha primeira competição, minha equipe, Android, conquistou 7º lugar, se classificando para a etapa estadual.",
     image: "/images/conquistas/obr-regional-2018.jpg",
     link: "https://www.facebook.com/osni.silva.16/posts/pfbid034Kc9KUeWQJqcE9PN1rq7EDckeFgS5vy6Gngy3zyJmRQe1nAJxm4kLTULZkyqKFvTl",
   },
@@ -507,7 +507,7 @@ const ACHIEVEMENT_GROUPS_EN: Record<AchievementGroup, string> = {
 const ACHIEVEMENTS_EN: Record<string, Partial<Achievement>> = {
   "hackathon-construtech-2024": {
     title: "2nd ConstruTech Hackathon",
-    description: "Team INTLOG took 1st place at the 2024 ConstruTech Hackathon with a new solution for the construction industry.",
+    description: "Team INTLOG took 1st place at the 2024 ConstruTech Hackathon, focused on the construction industry.",
   },
   "iron-cup-2024": { category: "Event", description: "I worked as event staff in the Combat category." },
   "off-season-2023": {
@@ -528,23 +528,23 @@ const ACHIEVEMENTS_EN: Record<string, Partial<Achievement>> = {
   "fira-regional-rj": { description: "Champions in Tug of War and Mission Impossible." },
   "fll-cargoconnect": { description: "2nd place in the Innovation Project category at the state stage." },
   "tjr-nacional-2021": { title: "TJR National", description: "4th place in the Sumo category." },
-  "tbr-nacional-2021": { title: "TBR National", description: "Our team presented a solid social project built around the season's theme." },
+  "tbr-nacional-2021": { title: "TBR National", description: "Our team presented a social project built around the season's theme." },
   "hacking-rio": {
     description: "Team SmartHack won the Best Code award. We also received a motion of praise from the Resende city council.",
   },
   "tjr-regional-2021": { description: "Our team won the Sumo category." },
-  "obrvs-nacional-2021": { title: "OBR Virtual Simulation – National" },
-  "tbr-regional-2021": { description: "The team presented a very solid project on the theme and qualified for the national stage." },
+  "obrvs-nacional-2021": { title: "OBR Virtual Simulation (National)" },
+  "tbr-regional-2021": { description: "The team presented a project on the theme and qualified for the national stage." },
   "obrvs-estadual-2021": {
-    title: "OBR Virtual Simulation – State",
+    title: "OBR Virtual Simulation (State)",
     description: "We took 2nd place, which qualified us for the national stage.",
   },
   "obrvs-nacional-2020": {
-    title: "OBR Virtual Simulation – National",
-    description: "Our team worked through many challenges and finished 27th in Brazil, featured on the OBR cover.",
+    title: "OBR Virtual Simulation (National)",
+    description: "Our team finished 27th in Brazil and was featured on the OBR cover.",
   },
   "obrvs-estadual-2020": {
-    title: "OBR Virtual Simulation – State",
+    title: "OBR Virtual Simulation (State)",
     description: "Our team placed 3rd, which qualified us for the national stage.",
   },
   "obmep-2019": {
@@ -572,7 +572,7 @@ const ACHIEVEMENTS_EN: Record<string, Partial<Achievement>> = {
     description: "Team Android took 1st place in Journey to the Center of the Earth and qualified for the national stage.",
   },
   "mocao-2018": {
-    title: "Motion of applause — Piraí city council",
+    title: "Motion of applause from the Piraí city council",
     category: "Recognition",
     description: "Motion of applause from the Piraí city council for our performance at the Brazilian Robotics Olympiad.",
   },
