@@ -364,6 +364,8 @@ Alguns problemas que apareceram no caminho e como foram resolvidos:
 
 ## Deploy (Vercel)
 
+O site está no ar na Vercel, em `www.cauacampos.dev`. Os passos abaixo ficam como referência para montar o projeto do zero.
+
 Não precisa de `vercel.json`: o Next é detectado sozinho e o build é `npm run build`.
 
 1. Na Vercel, **Add New → Project** e importe este repositório. Deixe tudo no padrão e faça o deploy.
@@ -378,8 +380,9 @@ Não precisa de `vercel.json`: o Next é detectado sozinho e o build é `npm run
 
 ## Próximos passos
 
-- [ ] Fotos dos projetos (os espaços já existem como "foto pendente").
-- [ ] Deploy na Vercel e troca do domínio (passo a passo acima).
+- [ ] Capturas dos dois projetos que ainda aparecem como "foto pendente": **Zonas geográficas no mapa** e **Jogo FRC Charged Up**. Os sistemas de empresa usam o documento tarjado de propósito.
+- [ ] Prints novos para a galeria deste README: a robótica com os números atuais e a página de competições.
+- [ ] Contar na página de competições o que foi construído em cada hackathon (ConstruTech e Hacking.Rio).
 
 ---
 
