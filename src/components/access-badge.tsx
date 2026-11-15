@@ -1,14 +1,17 @@
-import { ACCESS, type Access } from "@/content/projects";
+import type { Access } from "@/content/projects";
+import { accessFor } from "@/content/projects-en";
+import type { Lang } from "@/i18n";
 
 const MARK: Record<Access, string> = {
   online: "●",
   "codigo-aberto": "</>",
   privado: "■",
+  "em-breve": "◐",
 };
 
 /** What a visitor can open: online / open source / private. */
-export function AccessBadge({ access, className = "" }: { access: Access; className?: string }) {
-  const a = ACCESS[access];
+export function AccessBadge({ access, lang = "pt", className = "" }: { access: Access; lang?: Lang; className?: string }) {
+  const a = accessFor(lang)[access];
   return (
     <span
       title={a.hint}
