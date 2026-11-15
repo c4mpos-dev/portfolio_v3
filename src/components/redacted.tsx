@@ -78,7 +78,7 @@ export function Redacted({ fig, caption, org, lang = "pt", className }: { fig: s
         </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. {fig}</span> — {caption}. {tr(lang, "Tela não publicada: sistema privado.", "Screen not published: private system.")}
+        <span className="text-accent">FIG. {fig}</span> · {caption}. {tr(lang, "Tela não publicada: sistema privado.", "Screen not published: private system.")}
       </figcaption>
     </figure>
   );

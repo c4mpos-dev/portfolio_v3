@@ -63,7 +63,7 @@ export function ProjectGallery({
               {/* Screenshots are shown whole (contain), never cropped */}
               <Figure
                 src={s.src}
-                alt={`${name} — ${s.caption}`}
+                alt={`${name}: ${s.caption}`}
                 fig={fig}
                 caption={s.caption}
                 fit="contain"
@@ -112,7 +112,7 @@ export function ProjectGallery({
               </button>
             </div>
             <div className="relative h-[min(72vh,720px)] bg-paper">
-              <Image src={current.src!} alt={`${name} — ${current.caption}`} fill sizes="1120px" className="object-contain p-3" />
+              <Image src={current.src!} alt={`${name}: ${current.caption}`} fill sizes="1120px" className="object-contain p-3" />
             </div>
             <div className="flex items-center justify-between gap-4 border-t border-line px-4 py-3">
               <p className="font-mono text-[12px] text-ink-2">{current.caption}</p>

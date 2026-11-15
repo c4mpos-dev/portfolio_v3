@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export async function generateImageMetadata({ params }: { params: { lang: string } | Promise<{ lang: string }> }) {
   const p = await params;
   const lang = isLang(p.lang) ? p.lang : "pt";
-  return [{ id: "card", alt: tr(lang, "Cauã Campos — Desenvolvedor Full Stack", "Cauã Campos — Full Stack Developer"), size, contentType }];
+  return [{ id: "card", alt: tr(lang, "Cauã Campos, desenvolvedor Full Stack", "Cauã Campos, Full Stack Developer"), size, contentType }];
 }
 
 export default async function Image({ params }: { params: Promise<{ lang: string }> }) {

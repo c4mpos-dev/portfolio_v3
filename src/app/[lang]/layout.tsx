@@ -23,15 +23,15 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   if (!isLang(lang)) return {};
   const description = tr(
     lang,
-    "Desenvolvedor Full Stack com TypeScript nas duas pontas — NestJS e Node.js no back-end, React e Next.js no front. Sistemas distribuídos, IoT e Clean Architecture. Resende, RJ.",
-    "Full Stack Developer with TypeScript on both ends — NestJS and Node.js on the back end, React and Next.js on the front. Distributed systems, IoT and Clean Architecture. Resende, Brazil.",
+    "Desenvolvedor Full Stack com TypeScript nas duas pontas: NestJS e Node.js no back-end, React e Next.js no front. Sistemas distribuídos, IoT e Clean Architecture. Resende, RJ.",
+    "Full Stack Developer with TypeScript on both ends: NestJS and Node.js on the back end, React and Next.js on the front. Distributed systems, IoT and Clean Architecture. Resende, Brazil.",
   );
   return {
     ...pageMetadata(lang, "/", { description }),
     metadataBase: new URL(SITE_URL),
     title: {
-      default: "Cauã Campos — Full Stack Developer",
-      template: `%s — ${SITE_NAME}`,
+      default: "Cauã Campos | Full Stack Developer",
+      template: `%s | ${SITE_NAME}`,
     },
     applicationName: SITE_NAME,
     authors: [{ name: "Cauã Campos", url: SITE_URL }],

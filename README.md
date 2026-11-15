@@ -347,7 +347,7 @@ Alguns problemas que apareceram no caminho e como foram resolvidos:
 - **Prévia ao colar o link** (WhatsApp, LinkedIn, X): cada página gera a sua imagem 1200 × 630 no estilo do site — folha, título e dados da página —, em PT e em EN. O desenho fica em `src/app/_og/card.tsx`; cada rota tem o seu `opengraph-image.tsx`.
 - `sitemap.xml` e `robots.txt` são gerados (`src/app/sitemap.ts` e `src/app/robots.ts`).
 - O endereço público é `https://www.cauacampos.dev` (o domínio sem `www` redireciona). Para outro domínio, defina `NEXT_PUBLIC_SITE_URL`.
-- Endereços do site anterior continuam funcionando: `/achievements` → `/robotica#linha-do-tempo`, `/teams` → `/robotica/equipes` e `/cv-caua.pdf`.
+- Endereços do site anterior continuam funcionando: `/achievements` → `/robotica#linha-do-tempo`, `/teams` → `/robotica/equipes` e `/cv-caua.pdf` (que agora leva ao currículo atual, `/cv_CauaCampos.pdf`).
 
 ## Deploy (Vercel)
 

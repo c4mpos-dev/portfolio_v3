@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export async function generateImageMetadata({ params }: { params: { lang: string; slug: string } | Promise<{ lang: string; slug: string }> }) {
   const p = await params;
   const lang = isLang(p.lang) ? p.lang : "pt";
-  return [{ id: "card", alt: `${getProjectFor(lang, p.slug)?.name ?? tr(lang, "Projeto", "Project")} — Cauã Campos`, size, contentType }];
+  return [{ id: "card", alt: `${getProjectFor(lang, p.slug)?.name ?? tr(lang, "Projeto", "Project")} | Cauã Campos`, size, contentType }];
 }
 
 export default async function Image({ params }: { params: Promise<{ lang: string; slug: string }> }) {
@@ -26,7 +26,7 @@ export default async function Image({ params }: { params: Promise<{ lang: string
     sheet: `${tr(lang, "Projeto", "Project")} ${n} / ${p ? kindsFor(lang)[p.kind] : ""}`,
     title: p?.name ?? "Cauã Campos",
     subtitle: p?.summary,
-    tags: p ? [...(p.year ? [p.year.replace(/\s/g, "")] : []), ...p.stack.slice(0, 4)] : [],
+    tags: p ? [...(p.year ? [p.year] : []), ...p.stack.slice(0, 4)] : [],
     dimension: p?.org ?? "cauacampos.dev",
   });
 }

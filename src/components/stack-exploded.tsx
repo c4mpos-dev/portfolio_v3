@@ -113,7 +113,7 @@ export function StackExploded({ lang = "pt" }: { lang?: Lang }) {
         </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. 02</span> —{" "}
+        <span className="text-accent">FIG. 02</span> ·{" "}
         {tr(lang, "Vista explodida da stack. As camadas se encaixam conforme você rola.", "Exploded view of the stack. The layers seat as you scroll.")}
       </figcaption>
     </figure>

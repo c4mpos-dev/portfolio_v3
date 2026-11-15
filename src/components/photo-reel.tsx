@@ -147,7 +147,7 @@ export function PhotoReel({ photos, fig }: { photos: TravelPhoto[]; fig: string 
         <span className="text-accent">
           FIG. {fig}.{i + 1}
         </span>{" "}
-        — {tr(lang, "Por onde passei.", "Places I've been.")} {String(i + 1).padStart(2, "0")}/{String(photos.length).padStart(2, "0")}
+        · {tr(lang, "Por onde passei.", "Places I've been.")} {String(i + 1).padStart(2, "0")}/{String(photos.length).padStart(2, "0")}
       </figcaption>
     </figure>
   );

@@ -142,7 +142,7 @@ export function ArchDiagram({ lang = "pt" }: { lang?: Lang }) {
         </div>
       </div>
       <figcaption className="mt-2 font-mono text-[11px] text-muted">
-        <span className="text-accent">FIG. 01</span> —{" "}
+        <span className="text-accent">FIG. 01</span> ·{" "}
         {tr(lang, "Sistema distribuído em três serviços. Passe o mouse numa caixa para ver os fluxos dela.", "A distributed system in three services. Hover a box to see its flows.")}
       </figcaption>
     </figure>
