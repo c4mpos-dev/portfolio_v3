@@ -12,8 +12,10 @@ export const social = {
 
 export type NavSection = { id: string; label: string };
 
-/** Navigation for each page: its own sections (the "folhas") plus a link to the other page. */
-export const pageNav: Record<string, { sections: NavSection[]; other: { href: string; label: string } }> = {
+/** Navigation for each page: its own sections (the "folhas") plus links to the other pages. */
+export type NavLink = { href: string; label: string };
+
+export const pageNav: Record<string, { sections: NavSection[]; links: NavLink[] }> = {
   "/": {
     sections: [
       { id: "experiencia", label: "Experiência" },
@@ -24,7 +26,10 @@ export const pageNav: Record<string, { sections: NavSection[]; other: { href: st
       { id: "sobre", label: "Sobre" },
       { id: "contato", label: "Contato" },
     ],
-    other: { href: "/robotica", label: "Robótica" },
+    links: [
+      { href: "/robotica", label: "Robótica" },
+      { href: "/competicoes", label: "Competições" },
+    ],
   },
   "/robotica": {
     sections: [
@@ -32,7 +37,10 @@ export const pageNav: Record<string, { sections: NavSection[]; other: { href: st
       { id: "linha-do-tempo", label: "Linha do tempo" },
       { id: "equipes", label: "Equipes" },
     ],
-    other: { href: "/", label: "Início" },
+    links: [
+      { href: "/", label: "Início" },
+      { href: "/competicoes", label: "Competições" },
+    ],
   },
   "/robotica/equipes": {
     sections: [
@@ -40,14 +48,24 @@ export const pageNav: Record<string, { sections: NavSection[]; other: { href: st
       { id: "smart-lego", label: "Smart Lego" },
       { id: "nine-tails", label: "Nine Tails" },
     ],
-    other: { href: "/robotica", label: "Robótica" },
+    links: [{ href: "/robotica", label: "Robótica" }],
+  },
+  "/competicoes": {
+    sections: [
+      { id: "hackathons", label: "Hackathons" },
+      { id: "olimpiadas", label: "Olimpíadas" },
+    ],
+    links: [
+      { href: "/", label: "Início" },
+      { href: "/robotica", label: "Robótica" },
+    ],
   },
   "/projetos": {
     sections: [
       { id: "visao-geral", label: "Visão geral" },
       { id: "galeria", label: "Galeria" },
     ],
-    other: { href: "/#projetos", label: "Projetos" },
+    links: [{ href: "/#projetos", label: "Projetos" }],
   },
 };
 
@@ -63,6 +81,8 @@ const LABELS_EN: Record<string, string> = {
   Destaques: "Highlights",
   "Linha do tempo": "Timeline",
   Equipes: "Teams",
+  Competições: "Competitions",
+  Olimpíadas: "Olympiads",
   Início: "Home",
   "Visão geral": "Overview",
   Galeria: "Gallery",
@@ -73,8 +93,8 @@ const LABELS_EN: Record<string, string> = {
  * one entry. Unknown paths (the 404 page) have no sections.
  */
 export function navFor(pathname: string, lang: Lang = "pt") {
-  const nav = pageNav[pathname.startsWith("/projetos/") ? "/projetos" : pathname] ?? { sections: [], other: { href: "/", label: "Início" } };
+  const nav = pageNav[pathname.startsWith("/projetos/") ? "/projetos" : pathname] ?? { sections: [], links: [{ href: "/", label: "Início" }] };
   if (lang === "pt") return nav;
   const en = (l: string) => LABELS_EN[l] ?? l;
-  return { sections: nav.sections.map((s) => ({ ...s, label: en(s.label) })), other: { ...nav.other, label: en(nav.other.label) } };
+  return { sections: nav.sections.map((s) => ({ ...s, label: en(s.label) })), links: nav.links.map((l) => ({ ...l, label: en(l.label) })) };
 }

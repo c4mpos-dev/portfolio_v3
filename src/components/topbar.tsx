@@ -34,17 +34,16 @@ export function Topbar() {
   }, [open]);
 
   const items = nav.sections.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, "0"), on: active?.id === s.id }));
-  const other = localePath(lang, nav.other.href);
 
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between gap-5 px-[clamp(16px,4vw,40px)]">
-          <Link href={localePath(lang, "/")} aria-label={tr(lang, "Cauã Campos — início", "Cauã Campos — home")} onClick={close}>
+        <div className="mx-auto flex h-14 max-w-[1200px] items-center min-[1440px]:max-w-[1360px] justify-between gap-5 px-[clamp(16px,4vw,40px)]">
+          <Link href={localePath(lang, "/")} aria-label={tr(lang, "Cauã Campos, início", "Cauã Campos, home")} onClick={close}>
             <LogoLockup />
           </Link>
 
-          <nav aria-label={tr(lang, "Seções", "Sections")} className="hidden items-center gap-4 xl:flex">
+          <nav aria-label={tr(lang, "Seções", "Sections")} className="hidden items-center gap-3 xl:flex min-[1440px]:gap-4">
             {items.map((s) => (
               <a
                 key={s.id}
@@ -52,13 +51,21 @@ export function Topbar() {
                 aria-current={s.on ? "location" : undefined}
                 className={`relative py-4 font-mono text-[11px] tracking-[0.04em] whitespace-nowrap uppercase transition-colors ${s.on ? "text-ink" : "text-muted hover:text-ink"}`}
               >
-                <span className={s.on ? "text-accent" : "text-faint"}>{s.n}</span> {s.label}
+                {/* Numbers only where the bar has room for them */}
+                <span className={`mr-[1ch] hidden min-[1440px]:inline ${s.on ? "text-accent" : "text-faint"}`}>{s.n}</span>
+                {s.label}
                 <span className={`absolute inset-x-0 -bottom-px h-[2px] bg-accent transition-transform duration-300 ${s.on ? "scale-x-100" : "scale-x-0"}`} />
               </a>
             ))}
-            <Link href={other} className="border border-line px-2 py-1 font-mono text-[11px] whitespace-nowrap uppercase transition-colors hover:border-accent hover:text-accent">
-              {nav.other.label} →
-            </Link>
+            {nav.links.map((l) => (
+              <Link
+                key={l.href}
+                href={localePath(lang, l.href)}
+                className="border border-line px-2 py-1 font-mono text-[11px] whitespace-nowrap uppercase transition-colors hover:border-accent hover:text-accent"
+              >
+                {l.label} →
+              </Link>
+            ))}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -90,9 +97,13 @@ export function Topbar() {
             ))}
           </ol>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <Link href={other} onClick={close} className="link-u">
-              {nav.other.label} →
-            </Link>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {nav.links.map((l) => (
+                <Link key={l.href} href={localePath(lang, l.href)} onClick={close} className="link-u">
+                  {l.label} →
+                </Link>
+              ))}
+            </div>
             <div className="flex items-center gap-2 sm:hidden">
               <ThemeToggle />
               <LangToggle />
