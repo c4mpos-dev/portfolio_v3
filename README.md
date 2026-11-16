@@ -378,14 +378,6 @@ Não precisa de `vercel.json`: o Next é detectado sozinho e o build é `npm run
 
 ---
 
-## Próximos passos
-
-- [ ] Capturas dos dois projetos que ainda aparecem como "foto pendente": **Zonas geográficas no mapa** e **Jogo FRC Charged Up**. Os sistemas de empresa usam o documento tarjado de propósito.
-- [ ] Prints novos para a galeria deste README: a robótica com os números atuais e a página de competições.
-- [ ] Contar na página de competições o que foi construído em cada hackathon (ConstruTech e Hacking.Rio).
-
----
-
 <div align="center">
 
 <img src="public/brand/logo-mark-dark.svg#gh-light-mode-only" width="40" alt="">
